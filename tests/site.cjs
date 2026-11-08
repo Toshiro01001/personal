@@ -13,7 +13,7 @@ const http = require("http");
 const path = require("path");
 const fs = require("fs");
 
-const PORTA = 8306;
+const PORTA = Number(process.env.PORTA) || 8306;
 const BASE = `http://127.0.0.1:${PORTA}/`;
 const RAIZ = path.resolve(__dirname, "..");
 const CAPTURAS = process.env.CAPTURAS === "1";
@@ -119,6 +119,33 @@ async function testarFuncoes(page, nome) {
   checar(!(await page.isVisible("#confirmacao")), `[${nome}] confirmação deveria sumir ao cancelar`);
 }
 
+// Foto do hero: carregou, tem a proporção 4:3 e o texto do hero não encosta nela (legibilidade).
+async function checarHero(page, contSel) {
+  return page.evaluate((contSel) => {
+    const img = document.querySelector("img.hero-foto");
+    if (!img) return { existe: false };
+    const r = img.getBoundingClientRect();
+    const caixa = img.parentElement.getBoundingClientRect();
+    const raiz = document.querySelector(contSel) || document;
+    let sobreposto = 0;
+    for (const t of raiz.querySelectorAll("h1, p, a, dl, dt, dd")) {
+      const b = t.getBoundingClientRect();
+      if (!b.width || !b.height) continue;
+      const w = Math.min(b.right, r.right) - Math.max(b.left, r.left);
+      const h = Math.min(b.bottom, r.bottom) - Math.max(b.top, r.top);
+      if (w > 1 && h > 1) sobreposto++;
+    }
+    return {
+      existe: true,
+      carregou: img.complete && img.naturalWidth === 1440 && img.naturalHeight === 1080,
+      alt: (img.getAttribute("alt") || "").length > 20,
+      proporcao: Math.round((caixa.width / caixa.height) * 100) / 100,
+      cabe: r.left >= -1 && r.right <= document.documentElement.clientWidth + 1,
+      sobreposto
+    };
+  }, contSel);
+}
+
 async function capturar(page, nome, cenario) {
   if (!CAPTURAS) return;
   const pasta = SHOTS_DIR || path.join(RAIZ, "docs");
@@ -152,6 +179,12 @@ async function capturar(page, nome, cenario) {
       // Fonte local carregou?
       const fonteOk = await page.evaluate(() => document.fonts.check('800 1em "Archivo"'));
       checar(fonteOk, `[${cenario.nome}] fonte Archivo não carregou`);
+
+      const hero = await checarHero(page, ".abertura-texto");
+      checar(hero.existe && hero.carregou, `[${cenario.nome}] a foto do hero não carregou (1440x1080)`);
+      checar(hero.existe && hero.alt, `[${cenario.nome}] a foto do hero está sem alt descritivo`);
+      checar(hero.existe && Math.abs(hero.proporcao - 1.33) < 0.02, `[${cenario.nome}] contêiner do hero fora de 4:3 (${hero.proporcao})`);
+      checar(hero.existe && hero.cabe && hero.sobreposto === 0, `[${cenario.nome}] a foto sai da tela ou há texto do hero sobre ela (${hero.sobreposto} sobreposições)`);
 
       await capturar(page, "capa", cenario.nome);
       await testarFuncoes(page, cenario.nome);

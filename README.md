@@ -35,7 +35,7 @@ O estudo completo está em [`docs/identidade.md`](docs/identidade.md).
 - **Nome e ideia**: Cadência Treino. A marca vende constância, não intensidade: "Treino que cabe na sua semana e dura o ano inteiro".
 - **Paleta**: Giz `#F2F0EA` (fundo), Ferro `#15181F` (texto e faixas escuras), Aço `#525A6B` (texto secundário), Linha `#CFCCC2` (bordas) e um único destaque, Cobalto `#2140D9`, que aparece em um lugar por tela. Fugi de propósito do preto com laranja e do neon de academia; o resultado lembra uma prancheta de treino.
 - **Fonte**: só uma, a Archivo variável (licença OFL), servida do próprio site em `fonts/`. Nos títulos ela fica condensada e pesada, como número de camisa; no texto fica normal. Nenhuma fonte vem de fora.
-- **Imagem forte**: um gráfico em SVG com as sete barras da semana, que sobe em sequência quando a página abre. Sem fotos de banco de imagem e sem fotos de pessoas. Ele volta em miniatura no resultado do plano, respondendo à escolha de dias.
+- **Imagem forte**: uma foto de uma kettlebell, uma corda de pular e uma toalha azul-cobalto sobre concreto (`img/hero.webp`). **A foto foi gerada por IA no Canva e é só ilustrativa**: o espaço e os objetos não existem. Sem fotos de banco de imagem e sem fotos de pessoas. A semana em barras continua em miniatura no resultado do plano, respondendo à escolha de dias.
 - **Movimento**: só a abertura e as respostas a cliques. Com "reduzir movimento" ativado no aparelho, nada se move.
 
 ## Como funciona por dentro
@@ -52,7 +52,7 @@ O site é um arquivo HTML, um CSS e um JavaScript, lidos direto pelo navegador. 
 - Content Security Policy por meta: `default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'`. Nenhum script inline e nenhum atributo `style`.
 - Acessibilidade: `lang="pt-BR"`, contraste AA ou melhor em todos os pares de cor, foco visível, formulários com `label`, `fieldset` e `legend`, resultados em regiões `aria-live`, agenda em tabela com cabeçalhos e botões reais, link "pular para o conteúdo".
 - Celular primeiro: grade de uma coluna até 900px, calha de 16px abaixo de 600px, agenda com seletor de dia abaixo de 700px, alvos de toque de pelo menos 44px.
-- Arquivos: `index.html`, `404.html` (caminhos absolutos em `/personal/`), `robots.txt`, `sitemap.xml`, `favicon.svg`, `css/estilo.css`, `js/app.js`, `fonts/`, `docs/` (identidade, vistoria e capturas), `tests/site.cjs`.
+- Arquivos: `index.html`, `404.html` (caminhos absolutos em `/personal/`), `robots.txt`, `sitemap.xml`, `favicon.svg`, `img/hero.webp` (foto da abertura), `css/estilo.css`, `js/app.js`, `fonts/`, `docs/` (identidade, vistoria e capturas), `tests/site.cjs`.
 
 ## Como rodar no seu computador
 

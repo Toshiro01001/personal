@@ -8,7 +8,7 @@ Estudo curto feito antes do código. Tudo aqui é fictício: a empresa, o profis
 
 Frase de posicionamento: **"Treino que cabe na sua semana e dura o ano inteiro."**
 
-A ideia central é constância, não intensidade. O personal fictício (Tiago Maciel) vende ritmo: poucos dias por semana, bem feitos, repetidos por meses. Por isso a marca se chama Cadência e a imagem forte é a semana vista como um ritmo de barras.
+A ideia central é constância, não intensidade. O personal fictício (Tiago Maciel) vende ritmo: poucos dias por semana, bem feitos, repetidos por meses. Por isso a marca se chama Cadência e a imagem forte é uma foto limpa de equipamento de treino; o ritmo da semana aparece em barras no resultado do plano.
 
 ## Paleta
 
@@ -19,7 +19,7 @@ A ideia central é constância, não intensidade. O personal fictício (Tiago Ma
 | Ferro | `#15181F` | Texto principal no claro e fundo da faixa escura (método, agenda). |
 | Aço | `#525A6B` | Texto secundário e legendas. Contraste 6,1:1 sobre Giz. |
 | Linha | `#CFCCC2` | Bordas de 1px e divisórias. Nunca usada como texto. |
-| Cobalto | `#2140D9` | O único destaque. Barras do hero, botão principal, dia selecionado. Texto branco sobre ele tem 7,5:1. |
+| Cobalto | `#2140D9` | O único destaque. Botão principal, dia selecionado e a semana em barras do resultado do plano; a toalha da foto do hero ecoa a cor. Texto branco sobre ele tem 7,5:1. |
 | Cobalto claro | `#8FA2FF` | Versão do destaque para texto pequeno sobre Ferro (7,4:1), porque o Cobalto puro some no fundo escuro. |
 
 Regra de uso: o Cobalto aparece em um lugar por tela, no máximo dois quando um deles é o botão principal. Nada de gradiente. Nenhum cartão com sombra: separação por linhas de 1px e por alternância Giz / Ferro.
@@ -59,12 +59,22 @@ Regra de peso: só 400, 600, 700 e 800. Nada de itálico.
 
 ## Imagem forte
 
-No hero, à direita do título, um gráfico em SVG desenhado à mão: sete barras verticais em Cobalto, uma por dia da semana, com alturas que formam o ritmo de uma semana de treino (dias de treino altos, dias de descanso baixos). Abaixo de cada barra, a inicial do dia. É o símbolo da marca e reaparece em miniatura no resultado do montador de plano, agora respondendo à escolha do visitante.
+O hero é uma **foto gerada por IA (Canva)**, ilustrativa: uma kettlebell preta de ferro sobre um piso de concreto cinza, uma corda de pular preta e uma toalha dobrada em azul-cobalto, diante de uma parede clara cortada por uma sombra diagonal. A luz dura e a sombra geométrica combinam com a Archivo condensada do título, e o azul da toalha é o único ponto de cor, o mesmo Cobalto da marca. Não há pessoas.
+
+O contêiner tem proporção fixa de 4:3, cantos de 3 px (o mesmo raio dos botões) e sem sombra nem borda. Enquanto a foto carrega, ele mostra a cor média dela. O gráfico de sete barras que ficava no hero foi retirado; a miniatura da semana continua no resultado do montador de plano, respondendo à escolha do visitante.
 
 Sem fotos de banco de imagem, sem fotos de pessoas, sem ícones genéricos.
 
+### Foto do hero
+
+- **Arquivo**: `img/hero.webp`, 1440 x 1080 px, proporção 4:3.
+- **Origem**: gerada por IA no Canva. O README e este estudo avisam que é ilustrativa.
+- **Prompt resumido**: "Natureza-morta de treino em estúdio: uma kettlebell preta fosca de ferro fundido, uma corda de pular preta com cabos escuros e uma toalha dobrada em azul-cobalto vivo, sobre piso de concreto cinza. Parede em tom de giz ao fundo, luz dura de janela com uma sombra diagonal nítida. Estilo editorial de site premium, sem texto, sem pessoas, proporção 4:3."
+- **Texto alternativo**: descreve a kettlebell, a corda de pular, a toalha azul e a parede com a sombra.
+- **Texto do hero**: fica ao lado da foto no computador e abaixo dela no celular, nunca por cima. O contraste do texto é o da página (Ferro sobre Giz) e não depende da foto.
+
 ## Movimento
 
-Um só momento orquestrado: ao abrir a página, as barras do hero sobem em sequência (700ms, atraso de 60ms entre elas) e o título entra de baixo para cima. Depois disso, só respostas a ações do visitante: o plano aparece, o horário selecionado muda de cor, o resultado da calculadora é atualizado.
+Um só momento orquestrado: ao abrir a página, o título entra de baixo para cima, linha por linha (700ms), e a foto do hero aparece com um fade de 900ms. Depois disso, só respostas a ações do visitante: o plano aparece, o horário selecionado muda de cor, o resultado da calculadora é atualizado.
 
-Com `prefers-reduced-motion: reduce`, nada se move: as barras já nascem na altura final e as transições são desligadas.
+Com `prefers-reduced-motion: reduce`, nada se move: o título e a foto já aparecem prontos e as transições são desligadas.

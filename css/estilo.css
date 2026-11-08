@@ -133,34 +133,23 @@ h3 { font-weight: 700; font-stretch: 85%; font-size: 1.375rem; line-height: 1.2;
 .titulo-grande span { display: block; }
 .acoes { display: flex; flex-wrap: wrap; gap: var(--e2); }
 
-.abertura-figura { max-width: 460px; justify-self: end; width: 100%; }
-.semana-svg { width: 100%; height: auto; }
-.barra { fill: var(--cobalto); transform-box: fill-box; transform-origin: bottom; }
-.barra-baixa { fill: var(--linha); }
-.semana-base { stroke: var(--ferro); stroke-width: 2; }
-.semana-rotulos text {
-  font-family: var(--fonte); font-weight: 700; font-stretch: 80%;
-  font-size: 18px; fill: var(--aco); text-anchor: middle;
+.abertura-figura {
+  max-width: 520px; justify-self: end; width: 100%;
+  aspect-ratio: 4 / 3; border-radius: var(--raio); overflow: hidden;
+  background: #A3A099; /* média da foto: aparece enquanto ela carrega */
 }
-.legenda { color: var(--aco); font-size: 0.875rem; font-weight: 500; font-stretch: 95%; margin-top: var(--e2); }
+.hero-foto { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* Animação de abertura: um só momento */
 @media (prefers-reduced-motion: no-preference) {
   .linha-anim { animation: subir 0.7s cubic-bezier(.2,.7,.2,1) both; }
   .linha-anim:nth-child(2) { animation-delay: 0.08s; }
   .linha-anim:nth-child(3) { animation-delay: 0.16s; }
-  .barra { animation: crescer 0.7s cubic-bezier(.2,.7,.2,1) both; }
-  .barra:nth-child(1) { animation-delay: 0.10s; }
-  .barra:nth-child(2) { animation-delay: 0.16s; }
-  .barra:nth-child(3) { animation-delay: 0.22s; }
-  .barra:nth-child(4) { animation-delay: 0.28s; }
-  .barra:nth-child(5) { animation-delay: 0.34s; }
-  .barra:nth-child(6) { animation-delay: 0.40s; }
-  .barra:nth-child(7) { animation-delay: 0.46s; }
+  .hero-foto { animation: foto-entra 0.9s ease-out both; }
   .opcao span, .botao, .menu a, .horario, .mini-dia { transition: background-color .15s, color .15s, border-color .15s; }
 }
 @keyframes subir { from { opacity: 0; transform: translateY(0.4em); } to { opacity: 1; transform: none; } }
-@keyframes crescer { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes foto-entra { from { opacity: 0; } to { opacity: 1; } }
 
 /* Seções */
 .secao { padding-block: var(--e6); border-top: 1px solid var(--linha); scroll-margin-top: 48px; }
@@ -366,7 +355,7 @@ code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-si
 /* Celular e telas estreitas */
 @media (max-width: 900px) {
   .abertura-grade { grid-template-columns: 1fr; }
-  .abertura-figura { justify-self: start; max-width: 360px; }
+  .abertura-figura { justify-self: start; max-width: 560px; order: -1; } /* no celular a foto abre a página, o texto vem logo abaixo */
   .duas-colunas { grid-template-columns: 1fr; gap: var(--e4); }
   .etapas { grid-template-columns: 1fr; }
   .depoimento { grid-template-columns: 1fr; gap: var(--e1); }
@@ -382,7 +371,7 @@ code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-si
 }
 @media (max-width: 600px) {
   :root { --calha: 16px; }
-  .abertura { padding-block: var(--e4); }
+  .abertura { padding-block: var(--e3) var(--e4); }
   .topo-conteudo { flex-direction: column; align-items: flex-start; }
   .menu { gap: 2px 12px; }
   .menu a { font-size: 0.875rem; }

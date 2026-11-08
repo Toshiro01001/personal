@@ -15,7 +15,7 @@ default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:;
 font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
 ```
 
-- Nenhum script inline e nenhum atributo `style`. Toda mudança visual dinâmica usa classes CSS; alturas de barras no SVG são atributos, não estilo.
+- Nenhum script inline e nenhum atributo `style`. Toda mudança visual dinâmica usa classes CSS.
 - `connect-src 'none'` bloqueia `fetch`, `XMLHttpRequest` e WebSocket, mesmo que um script fosse injetado.
 - `form-action 'none'` impede qualquer envio de formulário; os formulários têm `novalidate` e `preventDefault` no `submit`.
 - No `404.html`, `script-src 'none'`, porque a página não usa JavaScript.
