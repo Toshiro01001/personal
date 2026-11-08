@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Cadência Treino | Personal trainer em Cuiabá e consultoria online</title>
+  <meta name="description" content="Site de demonstração de um personal trainer fictício: monte um plano de treino, calcule IMC e gasto calórico e simule a reserva de um horário. Feito pela Mil e Uma Linhas!.">
+  <meta name="theme-color" content="#15181F">
+  <link rel="canonical" href="https://toshiro01001.github.io/personal/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/archivo-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<a class="pular" href="#plano">Pular para o montador de plano</a>
+
+<p class="faixa-demo" role="note">
+  Demonstração da <a href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a> com dados fictícios. Nada aqui é vendido, cobrado ou enviado de verdade.
+</p>
+
+<header class="topo">
+  <div class="grade topo-conteudo">
+    <a class="marca" href="#inicio" aria-label="Cadência Treino, início da página">
+      <span class="marca-nome">CADÊNCIA</span>
+      <span class="marca-sub">treino</span>
+    </a>
+    <nav class="menu" aria-label="Seções da página">
+      <a href="#plano">Plano</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#metodo">Método</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#como-funciona">Como funciona</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- ABERTURA -->
+  <section class="abertura" aria-labelledby="titulo-abertura">
+    <div class="grade abertura-grade">
+      <div class="abertura-texto">
+        <p class="abertura-local">Personal trainer em Cuiabá e consultoria online</p>
+        <h1 id="titulo-abertura" class="titulo-grande">
+          <span class="linha-anim">Treino que cabe</span>
+          <span class="linha-anim">na sua semana</span>
+          <span class="linha-anim">e dura o ano inteiro.</span>
+        </h1>
+        <p class="abertura-lead">Sou o Tiago Maciel. Monto treinos de 2 a 5 dias por semana que você consegue manter por meses, na academia, em casa ou ao ar livre. Escolha seu objetivo abaixo e veja um plano de exemplo com o preço na hora.</p>
+        <div class="acoes">
+          <a class="botao botao-principal" href="#plano">Montar meu plano</a>
+          <a class="botao botao-secundario" href="#agenda">Ver horários livres</a>
+        </div>
+      </div>
+      <figure class="abertura-figura">
+        <svg class="semana-svg" viewBox="0 0 420 300" role="img" aria-labelledby="semana-titulo semana-desc">
+          <title id="semana-titulo">Ritmo de uma semana de treino</title>
+          <desc id="semana-desc">Sete barras, uma por dia da semana. Segunda, quarta e sexta são altas, representando dias de treino; os outros dias são baixos, representando descanso.</desc>
+          <g class="barras">
+            <rect class="barra" x="10"  y="60"  width="44" height="200" rx="2" data-h="200"></rect>
+            <rect class="barra barra-baixa" x="68"  y="220" width="44" height="40" rx="2" data-h="40"></rect>
+            <rect class="barra" x="126" y="30"  width="44" height="230" rx="2" data-h="230"></rect>
+            <rect class="barra barra-baixa" x="184" y="230" width="44" height="30" rx="2" data-h="30"></rect>
+            <rect class="barra" x="242" y="90"  width="44" height="170" rx="2" data-h="170"></rect>
+            <rect class="barra barra-baixa" x="300" y="240" width="44" height="20" rx="2" data-h="20"></rect>
+            <rect class="barra barra-baixa" x="358" y="246" width="44" height="14" rx="2" data-h="14"></rect>
+          </g>
+          <line class="semana-base" x1="10" y1="261" x2="402" y2="261"></line>
+          <g class="semana-rotulos" aria-hidden="true">
+            <text x="32" y="290">S</text>
+            <text x="90" y="290">T</text>
+            <text x="148" y="290">Q</text>
+            <text x="206" y="290">Q</text>
+            <text x="264" y="290">S</text>
+            <text x="322" y="290">S</text>
+            <text x="380" y="290">D</text>
+          </g>
+        </svg>
+        <figcaption class="legenda">Uma semana de três treinos. O resto é descanso, e descanso também é parte do plano.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- MONTADOR DE PLANO -->
+  <section class="secao" id="plano" aria-labelledby="titulo-plano">
+    <div class="grade">
+      <h2 id="titulo-plano" class="titulo-secao">Monte seu plano</h2>
+      <p class="intro-secao">Responda três perguntas e eu mostro um plano de exemplo e o valor mensal. É uma demonstração: o plano de verdade sai depois da avaliação.</p>
+
+      <div class="duas-colunas">
+        <form class="formulario" id="form-plano" novalidate>
+          <fieldset class="campo-grupo">
+            <legend>Qual é o seu objetivo?</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="objetivo" value="emagrecer" checked><span>Emagrecer</span></label>
+              <label class="opcao"><input type="radio" name="objetivo" value="massa"><span>Ganhar massa</span></label>
+              <label class="opcao"><input type="radio" name="objetivo" value="condicionamento"><span>Condicionamento</span></label>
+              <label class="opcao"><input type="radio" name="objetivo" value="saude"><span>Saúde e disposição</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="campo-grupo">
+            <legend>Quantos dias por semana?</legend>
+            <div class="opcoes opcoes-numeros">
+              <label class="opcao"><input type="radio" name="dias" value="2"><span>2</span></label>
+              <label class="opcao"><input type="radio" name="dias" value="3" checked><span>3</span></label>
+              <label class="opcao"><input type="radio" name="dias" value="4"><span>4</span></label>
+              <label class="opcao"><input type="radio" name="dias" value="5"><span>5</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="campo-grupo">
+            <legend>Onde você vai treinar?</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="local" value="academia" checked><span>Academia</span></label>
+              <label class="opcao"><input type="radio" name="local" value="casa"><span>Em casa</span></label>
+              <label class="opcao"><input type="radio" name="local" value="arlivre"><span>Ao ar livre</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="campo-grupo">
+            <legend>Como quer o acompanhamento?</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="formato" value="presencial" checked><span>Presencial em Cuiabá</span></label>
+              <label class="opcao"><input type="radio" name="formato" value="online"><span>Consultoria online</span></label>
+            </div>
+          </fieldset>
+        </form>
+
+        <div class="resultado-plano" id="resultado-plano" aria-live="polite">
+          <p class="resultado-titulo" id="plano-nome">Plano de exemplo</p>
+          <div class="mini-semana" id="mini-semana" aria-label="Dias de treino na semana"></div>
+          <ol class="dias-plano" id="dias-plano"></ol>
+          <div class="preco-bloco">
+            <p class="preco-rotulo" id="preco-rotulo">Valor mensal, presencial</p>
+            <p class="preco-valor" id="preco-valor">R$ 900</p>
+            <p class="preco-nota" id="preco-nota">Preço fictício de demonstração. Inclui avaliação inicial e ajuste do plano a cada 4 semanas.</p>
+          </div>
+          <a class="botao botao-principal" href="#agenda">Reservar aula de experiência</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA -->
+  <section class="secao secao-alt" id="calculadora" aria-labelledby="titulo-calc">
+    <div class="grade">
+      <h2 id="titulo-calc" class="titulo-secao">Calculadora de IMC e gasto calórico</h2>
+      <p class="intro-secao">Preencha seus dados e veja seu IMC e uma estimativa de quantas calorias você gasta por dia. O cálculo roda no seu navegador e nada é enviado.</p>
+
+      <div class="duas-colunas">
+        <form class="formulario" id="form-calc" novalidate>
+          <fieldset class="campo-grupo">
+            <legend>Sexo biológico (para a fórmula)</legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="sexo" value="f" checked><span>Feminino</span></label>
+              <label class="opcao"><input type="radio" name="sexo" value="m"><span>Masculino</span></label>
+            </div>
+          </fieldset>
+          <div class="campos-linha">
+            <div class="campo">
+              <label for="idade">Idade (anos)</label>
+              <input id="idade" name="idade" type="number" inputmode="numeric" min="14" max="100" value="32" required>
+            </div>
+            <div class="campo">
+              <label for="altura">Altura (cm)</label>
+              <input id="altura" name="altura" type="number" inputmode="numeric" min="120" max="230" value="168" required>
+            </div>
+            <div class="campo">
+              <label for="peso">Peso (kg)</label>
+              <input id="peso" name="peso" type="number" inputmode="decimal" min="30" max="300" step="0.1" value="72" required>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="atividade">Seu dia a dia, fora do treino</label>
+            <select id="atividade" name="atividade">
+              <option value="1.2">Sentado quase o dia todo</option>
+              <option value="1.375" selected>Leve: ando e fico em pé um pouco</option>
+              <option value="1.55">Moderado: trabalho em pé</option>
+              <option value="1.725">Ativo: trabalho físico pesado</option>
+            </select>
+          </div>
+          <p class="erro" id="erro-calc" role="alert" hidden></p>
+        </form>
+
+        <div class="resultado-calc" aria-live="polite">
+          <div class="medida">
+            <p class="medida-rotulo">Seu IMC</p>
+            <p class="medida-valor" id="imc-valor">25,5</p>
+            <p class="medida-faixa" id="imc-faixa">Sobrepeso (25 a 29,9)</p>
+          </div>
+          <div class="medida">
+            <p class="medida-rotulo">Gasto diário estimado</p>
+            <p class="medida-valor"><span id="gasto-valor">1.950</span><span class="medida-unidade"> kcal</span></p>
+            <p class="medida-faixa" id="tmb-texto">Metabolismo basal de cerca de 1.420 kcal, vezes o fator do seu dia a dia.</p>
+          </div>
+          <p class="aviso">Estimativa feita com as fórmulas de IMC e de Mifflin-St Jeor. O IMC não distingue músculo de gordura e o gasto real varia de pessoa para pessoa. Isto não substitui avaliação médica ou nutricional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section class="secao secao-escura" id="metodo" aria-labelledby="titulo-metodo">
+    <div class="grade">
+      <h2 id="titulo-metodo" class="titulo-secao">Como eu trabalho</h2>
+      <p class="intro-secao">Três etapas que se repetem o ano inteiro. Nada de treino copiado da internet nem de planilha que ninguém segue.</p>
+      <dl class="etapas">
+        <div class="etapa">
+          <dt>Avaliação</dt>
+          <dd>Na primeira semana eu olho postura, mobilidade, histórico de lesões e, principalmente, sua rotina. O treino tem que caber nela, não o contrário.</dd>
+        </div>
+        <div class="etapa">
+          <dt>Plano</dt>
+          <dd>Você recebe o plano por escrito, com vídeo curto de cada exercício, carga sugerida e o que fazer se perder um dia. Presencial ou online, o material é o mesmo.</dd>
+        </div>
+        <div class="etapa">
+          <dt>Ajuste</dt>
+          <dd>A cada 4 semanas a gente mede o que mudou e troca o que precisa. É esse ciclo curto que mantém o resultado vindo sem você enjoar.</dd>
+        </div>
+      </dl>
+      <p class="metodo-bio">Tiago Maciel é um profissional fictício criado para esta demonstração. Em um site real, aqui entrariam a formação, o registro profissional e a história do personal.</p>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section class="secao secao-escura secao-agenda" id="agenda" aria-labelledby="titulo-agenda">
+    <div class="grade">
+      <h2 id="titulo-agenda" class="titulo-secao">Horários livres</h2>
+      <p class="intro-secao">Escolha um horário para a aula de experiência presencial. É uma agenda simulada: os horários ocupados são inventados e a reserva fica só no seu navegador.</p>
+
+      <div class="agenda-controles">
+        <button type="button" class="botao botao-escuro" id="semana-anterior" aria-label="Semana anterior">Semana anterior</button>
+        <p class="agenda-periodo" id="agenda-periodo" aria-live="polite"></p>
+        <button type="button" class="botao botao-escuro" id="semana-proxima" aria-label="Próxima semana">Próxima semana</button>
+      </div>
+
+      <div class="agenda-dias" id="agenda-dias" role="group" aria-label="Escolha o dia"></div>
+
+      <div class="agenda-rolagem">
+        <table class="agenda" id="agenda-tabela">
+          <caption class="visualmente-oculto">Horários da semana. Escolha uma célula livre para selecionar.</caption>
+          <thead><tr id="agenda-cabecalho"></tr></thead>
+          <tbody id="agenda-corpo"></tbody>
+        </table>
+      </div>
+      <p class="agenda-legenda"><span class="amostra amostra-livre"></span> livre <span class="amostra amostra-ocupado"></span> ocupado <span class="amostra amostra-escolhido"></span> escolhido</p>
+
+      <form class="formulario formulario-escuro" id="form-reserva" novalidate>
+        <div class="campos-linha">
+          <div class="campo">
+            <label for="reserva-nome">Seu primeiro nome</label>
+            <input id="reserva-nome" name="nome" type="text" autocomplete="given-name" maxlength="40" placeholder="Como quer ser chamado">
+          </div>
+          <div class="campo">
+            <label for="reserva-horario">Horário escolhido</label>
+            <input id="reserva-horario" type="text" readonly value="Nenhum horário escolhido" aria-live="polite">
+          </div>
+        </div>
+        <p class="erro erro-escura" id="erro-reserva" role="alert" hidden></p>
+        <div class="acoes">
+          <button type="submit" class="botao botao-principal">Confirmar aula de experiência</button>
+          <button type="button" class="botao botao-escuro" id="limpar-reserva" hidden>Cancelar reserva</button>
+        </div>
+      </form>
+
+      <div class="confirmacao" id="confirmacao" hidden tabindex="-1">
+        <p class="confirmacao-titulo">Aula de experiência marcada</p>
+        <p id="confirmacao-texto"></p>
+        <p class="confirmacao-nota">Nada foi enviado. A reserva fica guardada só neste navegador (localStorage) para você ver como a confirmação funcionaria. Use "Cancelar reserva" para apagar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="secao" id="depoimentos" aria-labelledby="titulo-depoimentos">
+    <div class="grade">
+      <h2 id="titulo-depoimentos" class="titulo-secao">Quem treina comigo</h2>
+      <p class="intro-secao">Depoimentos fictícios, com nomes e cidades inventados, só para mostrar como a seção ficaria em um site real.</p>
+      <div class="depoimentos">
+        <blockquote class="depoimento">
+          <p>Eu já tinha começado e parado uma dúzia de vezes. Com três dias por semana que cabem antes do trabalho, estou há oito meses sem falhar uma semana.</p>
+          <footer><cite>Renata Alcântara</cite>, Cuiabá, treino presencial</footer>
+        </blockquote>
+        <blockquote class="depoimento">
+          <p>Moro longe de academia e achei que consultoria online fosse só uma planilha. Recebi vídeo de cada exercício e ajuste toda vez que perguntei.</p>
+          <footer><cite>Jonas Peralta</cite>, Várzea Grande, consultoria online</footer>
+        </blockquote>
+        <blockquote class="depoimento">
+          <p>Comecei aos 58 anos querendo só subir escada sem cansar. Hoje faço agachamento com carga e o joelho parou de reclamar.</p>
+          <footer><cite>Cleide Marquezini</cite>, Rondonópolis, consultoria online</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO ISTO FUNCIONA -->
+  <section class="secao secao-alt" id="como-funciona" aria-labelledby="titulo-como">
+    <div class="grade">
+      <h2 id="titulo-como" class="titulo-secao">Como isto funciona</h2>
+      <p class="intro-secao">Esta página é uma demonstração da Mil e Uma Linhas! para mostrar a um personal trainer como poderia ser o site dele.</p>
+
+      <div class="explicacao">
+        <h3>Para quem só quer usar</h3>
+        <p>O site mostra o que o personal oferece e deixa você fazer três coisas sozinho: montar um plano de exemplo com preço, calcular seu IMC e gasto calórico, e escolher um horário de aula de experiência. Tudo acontece na hora, na própria página, sem cadastro e sem enviar nada para lugar nenhum.</p>
+
+        <h3>Como funciona por dentro</h3>
+        <p>A página inteira é um único arquivo de texto (HTML) com um arquivo de estilo (CSS) e um arquivo de comportamento (JavaScript), lidos pelo seu navegador. Quando você clica em uma opção, o JavaScript escolhe o plano em uma lista que já está dentro do site e redesenha o resultado. A calculadora aplica fórmulas conhecidas aos números que você digitou. A agenda inventa horários ocupados a partir da data, sempre do mesmo jeito, e guarda a sua reserva no armazenamento do navegador, que só você acessa. Não existe servidor, banco de dados nem conta: por isso o site carrega rápido e não coleta dados.</p>
+
+        <details class="detalhes-tecnicos">
+          <summary>Detalhes técnicos</summary>
+          <ul>
+            <li>HTML, CSS e JavaScript puros, sem framework, sem CDN, sem analytics. Fonte Archivo variável servida localmente (woff2, licença OFL).</li>
+            <li>Content Security Policy via meta: <code>default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'</code>. Sem script inline e sem atributo <code>style</code>; alturas dinâmicas são definidas pelo CSSOM (<code>element.style.setProperty</code>).</li>
+            <li>Montador de plano: tabela de divisões por número de dias, com exercícios trocados conforme o local (academia, casa, ar livre) e faixas de repetição conforme o objetivo. Preço vem de uma tabela fixa por formato e dias.</li>
+            <li>Calculadora: IMC = peso / altura². Gasto diário = TMB (Mifflin-St Jeor) vezes fator de atividade. Validação de faixas com mensagem de erro em <code>role="alert"</code>.</li>
+            <li>Agenda: grade semanal gerada a partir da data atual; ocupação determinística por função hash da data e hora. Reserva salva em <code>localStorage</code> na chave <code>cadencia-reserva</code>, com botão para apagar.</li>
+            <li>Acessibilidade: <code>lang="pt-BR"</code>, contraste AA ou melhor em todos os pares, foco visível, formulários com <code>label</code> e <code>fieldset</code>, resultados em <code>aria-live</code>, tabela da agenda com cabeçalhos e botões reais nas células.</li>
+            <li>Movimento: uma animação de abertura em CSS, desligada com <code>prefers-reduced-motion: reduce</code>.</li>
+            <li>Testes: <code>tests/site.cjs</code> com Playwright em 1280x900, iPhone 13 e 320px, checando erros de console, rolagem horizontal, texto cortado e as três funções.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="grade rodape-grade">
+    <div>
+      <p class="marca-nome marca-nome-rodape">CADÊNCIA</p>
+      <p>Tiago Maciel, personal trainer (fictício)<br>Av. Exemplo, 1000, Cuiabá, MT<br>Telefone fictício: (65) 90000-0000</p>
+    </div>
+    <div>
+      <p>Site de demonstração feito pela <a href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a>, Cuiabá. Todos os nomes, preços e depoimentos são inventados.</p>
+      <p class="rodape-miudo">Fonte Archivo, licença OFL. Nenhum dado é coletado.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>
