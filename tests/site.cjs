@@ -54,6 +54,8 @@ async function textoCortado(page) {
     const problemas = [];
     for (const el of document.querySelectorAll(seletores)) {
       if (!el.textContent.trim() || el.closest("[hidden]")) continue;
+      // A faixa em loop passa da tela de propósito (é cortada pela própria janela dela).
+      if (el.closest("[data-marquee]")) continue;
       const r = el.getBoundingClientRect();
       if (r.width === 0 || r.height === 0) continue;
       const estilo = getComputedStyle(el);

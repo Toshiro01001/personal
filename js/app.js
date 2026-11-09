@@ -19,6 +19,46 @@
   }
 
   /* =========================================================
+     0. MOVIMENTO (tudo desligado com "reduzir movimento")
+     ========================================================= */
+
+  var raiz = document.documentElement;
+  raiz.classList.add("js");
+  var semMovimento = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var temObservador = "IntersectionObserver" in window;
+  if (!semMovimento && temObservador) raiz.classList.add("js-revela");
+
+  // Reinicia uma animação de entrada (blur-up) no elemento.
+  function entrar(el) {
+    if (!el || semMovimento) return;
+    el.classList.remove("entra-agora");
+    void el.offsetWidth; // força o navegador a recomeçar a animação
+    el.classList.add("entra-agora");
+  }
+
+  // Número que conta do valor anterior ao novo em 400 ms.
+  // O texto real (lido por leitores de tela e pelos testes) muda na hora;
+  // a contagem aparece numa cópia aria-hidden por cima dele.
+  function contar(real, de, para, formatar) {
+    real.textContent = formatar(para);
+    var caixa = real.parentNode;
+    var conta = caixa && caixa.querySelector(".pilula-conta");
+    if (!conta || semMovimento || de === null || de === para || !window.requestAnimationFrame) return;
+    if (caixa._quadro) window.cancelAnimationFrame(caixa._quadro);
+    var inicio = null;
+    caixa.classList.add("contando");
+    function passo(t) {
+      if (inicio === null) inicio = t;
+      var p = Math.min(1, (t - inicio) / 400);
+      var suave = 1 - Math.pow(1 - p, 3);
+      conta.textContent = formatar(de + (para - de) * suave);
+      if (p < 1) caixa._quadro = window.requestAnimationFrame(passo);
+      else { caixa.classList.remove("contando"); caixa._quadro = null; }
+    }
+    caixa._quadro = window.requestAnimationFrame(passo);
+  }
+
+  /* =========================================================
      1. MONTADOR DE PLANO
      ========================================================= */
 
@@ -77,6 +117,14 @@
   };
   var LOCAIS = { academia: "na academia", casa: "em casa", arlivre: "ao ar livre" };
   var DIAS_SEMANA = ["S", "T", "Q", "Q", "S", "S", "D"];
+  // Foto e legenda do local escolhido (arquivos em img/, gerados por IA no Canva).
+  var FOTOS_LOCAL = {
+    academia: { src: "img/local-academia.webp", legenda: ["Academia", "rack e barra livre"], alt: "Área de pesos livres de uma academia vazia: rack de agachamento preto, barra com anilhas e piso emborrachado cinza, em luz de janela." },
+    casa: { src: "img/local-casa.webp", legenda: ["Em casa", "tapete, halteres e elástico"], alt: "Canto de sala de estar com tapete de treino cinza enrolado, um par de halteres pretos e uma faixa elástica, diante de uma parede clara com sombra de janela." },
+    arlivre: { src: "img/local-arlivre.webp", legenda: ["Ao ar livre", "parque em Cuiabá"], alt: "Pista de caminhada de um parque em Cuiabá no início da manhã, com barras fixas de calistenia em aço preto, árvores do cerrado e uma corda de pular pendurada." }
+  };
+  var precoAnterior = null;
+  var planoDesenhado = false;
   var DIAS_NOME = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"];
 
   function lerForm(form) {
@@ -95,15 +143,41 @@
 
     $("#plano-nome").textContent = objetivo.nome + ", " + dias + " dias " + LOCAIS[d.local];
 
-    // Mini semana
+    // Mini semana em barras: a altura acompanha o volume do treino do dia.
+    // As barras são recriadas, então a animação de subir recomeça a cada troca.
     var mini = $("#mini-semana");
     limpar(mini);
     DIAS_SEMANA.forEach(function (letra, i) {
-      var treina = divisao.dias.indexOf(i) !== -1;
-      var el = criar("span", "mini-dia" + (treina ? " treino" : ""), letra);
+      var pos = divisao.dias.indexOf(i);
+      var treina = pos !== -1;
+      var el = criar("span", "mini-dia" + (treina ? " treino" : ""));
       el.setAttribute("title", DIAS_NOME[i] + (treina ? ": treino" : ": descanso"));
+      var barra = criar("span", "mini-barra");
+      var altura = 0.14;
+      if (treina) {
+        var n = divisao.treinos[pos].grupos.length + (objetivo.extra ? 1 : 0);
+        altura = Math.min(1, 0.4 + n * 0.12);
+      }
+      barra.style.setProperty("--altura", String(altura));
+      barra.style.setProperty("--i", String(i));
+      el.appendChild(barra);
+      el.appendChild(criar("span", "mini-letra", letra));
       mini.appendChild(el);
     });
+
+    // Foto do local
+    var foto = FOTOS_LOCAL[d.local];
+    var img = $("#plano-foto-img");
+    if (foto && img && img.getAttribute("src") !== foto.src) {
+      img.setAttribute("src", foto.src);
+      img.setAttribute("alt", foto.alt);
+      var fig = $("#plano-foto");
+      fig.className = "plano-foto plano-foto-" + d.local;
+      var leg = $("#plano-foto-legenda");
+      limpar(leg);
+      leg.appendChild(criar("span", null, foto.legenda[0]));
+      leg.appendChild(criar("span", null, foto.legenda[1]));
+    }
 
     // Dias do plano
     var lista = $("#dias-plano");
@@ -123,10 +197,14 @@
     // Preço
     var valor = PRECOS[d.formato][dias];
     $("#preco-rotulo").textContent = d.formato === "presencial" ? "Valor mensal, presencial em Cuiabá" : "Valor mensal, consultoria online";
-    $("#preco-valor").textContent = moeda(valor);
+    contar($("#preco-valor"), precoAnterior, valor, function (v) { return moeda(Math.round(v / 10) * 10); });
+    precoAnterior = valor;
     $("#preco-nota").textContent = "Preço fictício de demonstração. " + objetivo.nota + (d.formato === "presencial"
       ? " Inclui avaliação inicial e ajuste do plano a cada 4 semanas."
       : " Inclui plano por escrito, vídeos dos exercícios e ajuste a cada 4 semanas por mensagem.");
+
+    if (planoDesenhado) entrar($("#resultado-plano"));
+    planoDesenhado = true;
   }
 
   /* =========================================================
@@ -141,6 +219,8 @@
     if (imc < 40) return "Obesidade grau 2 (35 a 39,9)";
     return "Obesidade grau 3 (40 ou mais)";
   }
+
+  var imcAnterior = null, gastoAnterior = null;
 
   function calcular() {
     var form = $("#form-calc");
@@ -168,9 +248,13 @@
     var tmb = 10 * peso + 6.25 * altura - 5 * idade + (sexo === "m" ? 5 : -161);
     var gasto = tmb * fator;
 
-    $("#imc-valor").textContent = imc.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    var imcArred = Math.round(imc * 10) / 10;
+    var gastoArred = Math.round(gasto / 10) * 10;
+    contar($("#imc-valor"), imcAnterior, imcArred, function (v) { return v.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }); });
+    contar($("#gasto-valor"), gastoAnterior, gastoArred, function (v) { return (Math.round(v / 10) * 10).toLocaleString("pt-BR"); });
+    imcAnterior = imcArred;
+    gastoAnterior = gastoArred;
     $("#imc-faixa").textContent = faixaIMC(imc);
-    $("#gasto-valor").textContent = (Math.round(gasto / 10) * 10).toLocaleString("pt-BR");
     $("#tmb-texto").textContent = "Metabolismo basal de cerca de " + (Math.round(tmb / 10) * 10).toLocaleString("pt-BR") + " kcal, vezes o fator do seu dia a dia.";
   }
 
@@ -283,23 +367,25 @@
         var estaReservado = reserva && reserva.data === chave && reserva.hora === hora;
         var estaEscolhido = escolhido && escolhido.data === chave && escolhido.hora === hora;
         var rotulo = DIAS_NOME[i] + ", " + formatarData(d) + ", " + hora + "h";
+        var estado = criar("span", "horario-estado");
+        b.appendChild(estado);
         if (estaReservado || estaEscolhido) {
           b.className += " escolhido";
-          b.textContent = estaReservado ? "Reservado" : "Escolhido";
+          estado.textContent = estaReservado ? "Reservado" : "Escolhido";
           b.setAttribute("aria-pressed", "true");
           b.setAttribute("aria-label", rotulo + ", " + (estaReservado ? "reservado por você" : "escolhido"));
         } else if (passado) {
           b.className += " passado";
-          b.textContent = "Passou";
+          estado.textContent = "Passou";
           b.disabled = true;
           b.setAttribute("aria-label", rotulo + ", já passou");
         } else if (ocupado(chave, hora)) {
           b.className += " ocupado";
-          b.textContent = "Ocupado";
+          estado.textContent = "Ocupado";
           b.disabled = true;
           b.setAttribute("aria-label", rotulo + ", ocupado");
         } else {
-          b.textContent = "Livre";
+          estado.textContent = "Livre";
           b.setAttribute("aria-pressed", "false");
           b.setAttribute("aria-label", rotulo + ", livre");
           b.dataset.data = chave;
@@ -389,6 +475,7 @@
       salvarReserva(r);
       mostrarConfirmacao(r);
       desenharAgenda();
+      entrar($("#confirmacao"));
       $("#confirmacao").focus();
     });
 
@@ -401,6 +488,123 @@
       $("#reserva-nome").value = "";
       atualizarCampoHorario();
       desenharAgenda();
+    });
+  }
+
+  /* =========================================================
+     4. FAIXA EM LOOP (pausa no hover e no botão)
+     ========================================================= */
+
+  function iniciarFaixa() {
+    var faixa = $("[data-marquee]"), botao = $("#faixa-pausa");
+    if (!faixa || !botao || semMovimento) return;
+    botao.hidden = false;
+    botao.addEventListener("click", function () {
+      var pausada = faixa.classList.toggle("pausada");
+      botao.setAttribute("aria-pressed", pausada ? "true" : "false");
+      botao.setAttribute("aria-label", pausada ? "Retomar a faixa em movimento" : "Pausar a faixa em movimento");
+    });
+  }
+
+  /* =========================================================
+     5. CARROSSEL DE DEPOIMENTOS (a partir de 720px; no celular, pilha)
+     ========================================================= */
+
+  var carrosselAtivo = false;
+
+  function iniciarCarrossel() {
+    var trilho = $("#depoimentos-trilho"), controles = $("#carrossel-controles");
+    if (!trilho || !controles || !window.matchMedia) return;
+    var cartoes = $$(".depoimento", trilho);
+    var total = cartoes.length;
+    if (total < 3) return;
+    var atual = 0;
+    var largo = window.matchMedia("(min-width: 720px)");
+
+    function posicionar() {
+      cartoes.forEach(function (c, i) {
+        c.classList.remove("pos-centro", "pos-esq", "pos-dir");
+        if (!carrosselAtivo) { c.removeAttribute("aria-hidden"); c.removeAttribute("aria-roledescription"); c.removeAttribute("aria-label"); return; }
+        var rel = (i - atual + total) % total;
+        c.classList.add(rel === 0 ? "pos-centro" : rel === 1 ? "pos-dir" : "pos-esq");
+        c.setAttribute("aria-roledescription", "depoimento");
+        c.setAttribute("aria-label", (i + 1) + " de " + total);
+        if (rel === 0) c.removeAttribute("aria-hidden"); else c.setAttribute("aria-hidden", "true");
+      });
+      $("#carrossel-posicao").textContent = (atual + 1) + " de " + total;
+    }
+    function ir(passo) { atual = (atual + passo + total) % total; posicionar(); }
+    function aplicarModo() {
+      carrosselAtivo = largo.matches;
+      trilho.classList.toggle("em-carrossel", carrosselAtivo);
+      controles.hidden = !carrosselAtivo;
+      posicionar();
+    }
+
+    $("#depo-anterior").addEventListener("click", function () { ir(-1); });
+    $("#depo-proximo").addEventListener("click", function () { ir(1); });
+    $("#carrossel").addEventListener("keydown", function (ev) {
+      if (!carrosselAtivo) return;
+      if (ev.key === "ArrowLeft") { ev.preventDefault(); ir(-1); }
+      if (ev.key === "ArrowRight") { ev.preventDefault(); ir(1); }
+    });
+
+    // Arraste com o dedo ou o mouse: 50px para trocar.
+    var inicioX = null;
+    trilho.addEventListener("pointerdown", function (ev) {
+      if (!carrosselAtivo) return;
+      inicioX = ev.clientX;
+      trilho.classList.add("arrastando");
+    });
+    function soltar(ev) {
+      if (inicioX === null) return;
+      var dx = ev.clientX - inicioX;
+      inicioX = null;
+      trilho.classList.remove("arrastando");
+      if (Math.abs(dx) > 50) ir(dx < 0 ? 1 : -1);
+    }
+    trilho.addEventListener("pointerup", soltar);
+    trilho.addEventListener("pointercancel", function () { inicioX = null; trilho.classList.remove("arrastando"); });
+    trilho.addEventListener("pointerleave", soltar);
+
+    if (largo.addEventListener) largo.addEventListener("change", aplicarModo);
+    else if (largo.addListener) largo.addListener(aplicarModo);
+    aplicarModo();
+  }
+
+  /* =========================================================
+     6. REVELAÇÃO AO ROLAR (títulos e blocos, uma vez só)
+     ========================================================= */
+
+  function iniciarRevelacao() {
+    if (semMovimento || !temObservador) return;
+
+    // Títulos de seção: linha revelada com bloco de cor quando o topo chega a 90% da tela.
+    var obsTitulo = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("visto"); obsTitulo.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -10% 0px" });
+    $$(".titulo-secao").forEach(function (t) { if (t.querySelector(".linha-anim")) obsTitulo.observe(t); });
+
+    // Blocos: entrada com desfoque ao atingir 20% da tela, 100 ms entre irmãos.
+    var alvos = $$(".etapa, .medida");
+    alvos = alvos.concat(carrosselAtivo ? [$("#carrossel")] : $$(".depoimento"));
+    var obsBloco = new IntersectionObserver(function (entradas) {
+      entradas.filter(function (e) { return e.isIntersecting; }).forEach(function (e, n) {
+        var el = e.target;
+        el.style.setProperty("--atraso", (n * 0.1) + "s"); // irmãos que entram juntos: 100 ms entre eles
+        el.classList.remove("aguarda");
+        el.classList.add("revela");
+        obsBloco.unobserve(el);
+      });
+    }, { threshold: 0.2 });
+    alvos.forEach(function (el) {
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) return; // já visível ao abrir: fica como está
+      el.classList.add("aguarda");
+      obsBloco.observe(el);
     });
   }
 
@@ -418,6 +622,9 @@
       calcular();
     }
     iniciarAgenda();
+    iniciarFaixa();
+    iniciarCarrossel();
+    iniciarRevelacao();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar);

@@ -8,7 +8,7 @@ Estudo curto feito antes do código. Tudo aqui é fictício: a empresa, o profis
 
 Frase de posicionamento: **"Treino que cabe na sua semana e dura o ano inteiro."**
 
-A ideia central é constância, não intensidade. O personal fictício (Tiago Maciel) vende ritmo: poucos dias por semana, bem feitos, repetidos por meses. Por isso a marca se chama Cadência e a imagem forte é uma foto limpa de equipamento de treino; o ritmo da semana aparece em barras no resultado do plano.
+A ideia central é constância, não intensidade. O personal fictício (Tiago Maciel) vende ritmo: poucos dias por semana, bem feitos, repetidos por meses. Por isso a marca se chama Cadência e a imagem forte é uma foto limpa de equipamento de treino; o ritmo da semana aparece em barras que sobem no resultado do plano.
 
 ## Paleta
 
@@ -19,8 +19,9 @@ A ideia central é constância, não intensidade. O personal fictício (Tiago Ma
 | Ferro | `#15181F` | Texto principal no claro e fundo da faixa escura (método, agenda). |
 | Aço | `#525A6B` | Texto secundário e legendas. Contraste 6,1:1 sobre Giz. |
 | Linha | `#CFCCC2` | Bordas de 1px e divisórias. Nunca usada como texto. |
-| Cobalto | `#2140D9` | O único destaque. Botão principal, dia selecionado e a semana em barras do resultado do plano; a toalha da foto do hero ecoa a cor. Texto branco sobre ele tem 7,5:1. |
+| Cobalto | `#2140D9` | O único destaque. Botão principal, dia selecionado e a semana em barras do resultado do plano; a toalha das fotos ecoa a cor. Texto branco sobre ele tem 7,5:1. |
 | Cobalto claro | `#8FA2FF` | Versão do destaque para texto pequeno sobre Ferro (7,4:1), porque o Cobalto puro some no fundo escuro. |
+| Cartão Ferro | `#1B1F28` | Cartões e trilhos sobre Ferro (etapas do método, seletor de semana e de dia, confirmação), com borda `rgba(242,240,234,.08)`. Não é cor nova: é o Ferro um tom acima, sem sombra. |
 
 Regra de uso: o Cobalto aparece em um lugar por tela, no máximo dois quando um deles é o botão principal. Nada de gradiente. Nenhum cartão com sombra: separação por linhas de 1px e por alternância Giz / Ferro.
 
@@ -54,7 +55,7 @@ Regra de peso: só 400, 600, 700 e 800. Nada de itálico.
 - Espaçamento em múltiplos de 8: 8, 16, 24, 40, 64, 112.
 - Alinhamento à esquerda em tudo. Centralização só no 404.
 - Cada seção começa com uma linha de 1px e um título condensado. Sem rótulos em caixa alta acima dos títulos e sem numeração decorativa.
-- Alternância de fundos: Giz (hero, plano, calculadora, depoimentos), Ferro (método e agenda).
+- Alternância de fundos: Giz (hero, plano, calculadora, depoimentos), Ferro (método, agenda e rodapé).
 - Faixa fina e fixa no topo avisando que é demonstração da Mil e Uma Linhas!.
 
 ## Imagem forte
@@ -63,7 +64,7 @@ O hero é uma **foto gerada por IA (Canva)**, ilustrativa: uma kettlebell preta 
 
 O contêiner tem proporção fixa de 4:3, cantos de 3 px (o mesmo raio dos botões) e sem sombra nem borda. Enquanto a foto carrega, ele mostra a cor média dela. O gráfico de sete barras que ficava no hero foi retirado; a miniatura da semana continua no resultado do montador de plano, respondendo à escolha do visitante.
 
-Sem fotos de banco de imagem, sem fotos de pessoas, sem ícones genéricos.
+Sem fotos de banco de imagem e sem ícones genéricos. Na leva final entraram fotos com pessoas, sempre vistas de costas e sem rosto reconhecível (o personal anotando a avaliação e uma aula de experiência), todas geradas por IA no Canva e ilustrativas.
 
 ### Foto do hero
 
@@ -75,6 +76,46 @@ Sem fotos de banco de imagem, sem fotos de pessoas, sem ícones genéricos.
 
 ## Movimento
 
-Um só momento orquestrado: ao abrir a página, o título entra de baixo para cima, linha por linha (700ms), e a foto do hero aparece com um fade de 900ms. Depois disso, só respostas a ações do visitante: o plano aparece, o horário selecionado muda de cor, o resultado da calculadora é atualizado.
+Ao abrir a página, cada linha do título é revelada da esquerda para a direita por um bloco Cobalto que varre a linha e encolhe (150 ms entre linhas), e a foto do hero aparece com um fade de 900 ms. Os títulos de seção fazem a mesma revelação quando entram na tela, uma vez só. Depois disso, quase tudo é resposta a uma ação do visitante: as barras da semana sobem quando o plano muda, os números do preço e da calculadora contam do valor antigo ao novo em 400 ms, o plano recalculado e a confirmação da aula entram com um leve desfoque, os botões rolam o rótulo no hover. A faixa de locais e dias rola sozinha a 40 s por volta, pausa no hover e tem botão de pausa.
 
-Com `prefers-reduced-motion: reduce`, nada se move: o título e a foto já aparecem prontos e as transições são desligadas.
+Com `prefers-reduced-motion: reduce`, nada se move: títulos, fotos e blocos já aparecem prontos, a faixa fica parada (e o botão de pausa some), os números trocam na hora e o carrossel troca sem transição.
+
+## Design systems aplicados (leva final)
+
+**Dupla**: Lando Norris Design System (claro, marca pessoal de atleta) e Ledger Design System (`developer-monetizati`, escuro, painel de bordas finas). O código é próprio: nenhuma biblioteca, nenhuma fonte e nenhum script de fora; os efeitos que nos originais usam GSAP, Rive, WebGL ou Unicorn Studio viraram CSS e JavaScript puros.
+
+**Como foram misturados**: as seções em Giz (abertura, plano, calculadora, depoimentos, como funciona) seguem o Lando, com títulos de impacto, revelação de linha com bloco de cor, botões com rolagem do rótulo, foto com legenda em olho, pílula de resultado e faixa em loop. As seções em Ferro (método, agenda) e o rodapé seguem o Ledger, com cartões `#1B1F28` de borda branca a 8%, chips de delta, trilho segmentado e lista de atividade. O lima do Lando e o esmeralda do Ledger viraram Cobalto (Cobalto claro sobre Ferro). Nenhum gradiente, nenhum brilho, nenhuma sombra em cartão, raio de 3 px em tudo (menos as setas redondas do carrossel). A paleta não mudou.
+
+**Componentes e onde estão**:
+
+| Componente | Origem | Onde |
+| --- | --- | --- |
+| Line highlight reveal (clip-path + bloco de cor, 150 ms entre linhas) | Lando | `h1#titulo-abertura .linha-anim` e todo `h2.titulo-secao` |
+| Impact statement (Archivo 800 largura 70 com destaque em 400 largura 100, sem itálico) | Lando | `p.declaracao` em `#metodo` e em `#depoimentos` |
+| Botão com rolagem do rótulo e seta de 12 px | Lando | `.botao-principal` e `.botao-secundario`, também nos links do rodapé |
+| Captioned photo (olho no canto, na cor da superfície, separado por linha de 1 px) | Lando | hero, foto do local no plano, retrato no método, foto da agenda |
+| Result pill (número + legenda divididos por hairline, contagem em 400 ms) | Lando | `div.preco-bloco` em `#plano` e as duas `div.medida` em `#calculadora` |
+| Logo row em marquee (40 s, para a direita, pausa no hover e por botão) | Lando | nova `div.faixa-cadencia` entre a abertura e `#plano` |
+| Footer link groups (olho + links em caixa alta + ação) | Lando | `footer.rodape` (Treino, Agenda, Sobre) e a marca CADÊNCIA gigante |
+| KPI cards com chip de delta | Ledger | `dl.etapas div.etapa` em `#metodo` (Semana 1, Por escrito, A cada 4 semanas) |
+| Bar cycle (sobe da base, 100 ms entre barras, sem loop infinito) | Ledger | `#mini-semana` no resultado do plano |
+| Segmented range (trilho escuro, pílula selecionada a 10%) | Ledger | `.agenda-controles` e `#agenda-dias` |
+| Activity list (linhas com hairline e hover a 3%) | Ledger | `table#agenda-tabela` abaixo de 720 px (horário, estado, botão Escolher) |
+| Delta chips (livre, ocupado, escolhido) | Ledger | células de `#agenda-corpo` e a legenda da agenda |
+| Blur-up entrance (30 px, desfoque de 8 px, .8 s) | Ledger | `#confirmacao`, `#resultado-plano` ao mudar, e `.etapa`, `.medida`, depoimentos ao rolar |
+| Testimonial carousel (rotação 3D, troca em 700 ms, setas de 48 px e arraste) | Ledger | `div.depoimentos` a partir de 720 px; no celular continua a pilha |
+
+**Fotos da leva final** (todas geradas por IA no Canva, ilustrativas, em `img/`):
+
+| Arquivo | Tamanho | Onde |
+| --- | --- | --- |
+| `tiago-retrato.webp` | 1152 x 1440 (4:5) | ao lado da bio, em `#metodo` |
+| `metodo-avaliacao.webp` | 1456 x 970 (3:2) | cartão Avaliação |
+| `metodo-plano.webp` | 1456 x 970 (3:2) | cartão Plano |
+| `metodo-ajuste.webp` | 1456 x 970 (3:2) | cartão Ajuste |
+| `local-academia.webp` | 1456 x 816 (16:9) | resultado do plano, local Academia |
+| `local-casa.webp` | 1456 x 816 (16:9) | resultado do plano, local Em casa |
+| `local-arlivre.webp` | 1456 x 816 (16:9) | resultado do plano, local Ao ar livre |
+| `agenda-aula-experiencia.webp` | 1456 x 1088 (4:3) | ao lado da introdução de `#agenda` |
+
+Cada contêiner tem a proporção fixa da foto, `object-fit: cover` e a cor média dela como fundo enquanto carrega. O plano previa um fade de Ferro na borda esquerda da foto da agenda; ficou de fora porque seria um gradiente, e a foto já é escura o bastante para se fundir ao Ferro.

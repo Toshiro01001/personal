@@ -51,20 +51,33 @@
         </h1>
         <p class="abertura-lead">Sou o Tiago Maciel. Monto treinos de 2 a 5 dias por semana que você consegue manter por meses, na academia, em casa ou ao ar livre. Escolha seu objetivo abaixo e veja um plano de exemplo com o preço na hora.</p>
         <div class="acoes">
-          <a class="botao botao-principal" href="#plano">Montar meu plano</a>
-          <a class="botao botao-secundario" href="#agenda">Ver horários livres</a>
+          <a class="botao botao-principal" href="#plano"><span class="rolo"><span class="rolo-texto" data-rotulo="Montar meu plano">Montar meu plano</span></span></a>
+          <a class="botao botao-secundario" href="#agenda"><span class="rolo"><span class="rolo-texto" data-rotulo="Ver horários livres">Ver horários livres</span></span></a>
         </div>
       </div>
       <figure class="abertura-figura">
-        <img class="hero-foto" src="img/hero.webp" width="1440" height="1080" alt="Uma kettlebell preta de ferro sobre um piso de concreto cinza, ao lado de uma corda de pular preta com cabos escuros e uma toalha dobrada em azul-cobalto, diante de uma parede clara cortada por uma sombra diagonal." fetchpriority="high">
+        <img class="hero-foto" src="img/hero.webp" width="1440" height="1080" alt="Uma kettlebell preta de ferro sobre um piso de concreto cinza, ao lado de uma corda de pular preta com cabos escuros e uma toalha dobrada em azul-cobalto, diante de uma parede clara cortada por uma sombra diagonal." fetchpriority="high" decoding="async">
+        <figcaption class="olho-foto"><span>Kettlebell, corda e toalha</span><span>Cuiabá, 2026</span></figcaption>
       </figure>
     </div>
   </section>
 
+  <!-- FAIXA DE LOCAIS E DIAS -->
+  <div class="faixa-cadencia" data-marquee>
+    <p class="visualmente-oculto">Onde e como: academia, em casa, ao ar livre, de 2 a 5 dias por semana, presencial ou online.</p>
+    <div class="faixa-janela" aria-hidden="true">
+      <div class="faixa-trilho">
+        <div class="faixa-grupo">Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online · Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online ·</div>
+        <div class="faixa-grupo">Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online · Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online ·</div>
+      </div>
+    </div>
+    <button type="button" class="faixa-pausa" id="faixa-pausa" aria-pressed="false" aria-label="Pausar a faixa em movimento" hidden></button>
+  </div>
+
   <!-- MONTADOR DE PLANO -->
   <section class="secao" id="plano" aria-labelledby="titulo-plano">
     <div class="grade">
-      <h2 id="titulo-plano" class="titulo-secao">Monte seu plano</h2>
+      <h2 id="titulo-plano" class="titulo-secao"><span class="linha-anim">Monte seu plano</span></h2>
       <p class="intro-secao">Responda três perguntas e eu mostro um plano de exemplo e o valor mensal. É uma demonstração: o plano de verdade sai depois da avaliação.</p>
 
       <div class="duas-colunas">
@@ -110,13 +123,20 @@
         <div class="resultado-plano" id="resultado-plano" aria-live="polite">
           <p class="resultado-titulo" id="plano-nome">Plano de exemplo</p>
           <div class="mini-semana" id="mini-semana" aria-label="Dias de treino na semana"></div>
+          <figure class="plano-foto plano-foto-academia" id="plano-foto">
+            <img id="plano-foto-img" src="img/local-academia.webp" width="1456" height="816" loading="lazy" decoding="async" alt="Área de pesos livres de uma academia vazia: rack de agachamento preto, barra com anilhas e piso emborrachado cinza, em luz de janela.">
+            <figcaption class="olho-foto" id="plano-foto-legenda"><span>Academia</span><span>rack e barra livre</span></figcaption>
+          </figure>
           <ol class="dias-plano" id="dias-plano"></ol>
           <div class="preco-bloco">
             <p class="preco-rotulo" id="preco-rotulo">Valor mensal, presencial</p>
-            <p class="preco-valor" id="preco-valor">R$ 900</p>
+            <div class="pilula">
+              <p class="pilula-numero"><span class="pilula-real" id="preco-valor">R$ 900</span><span class="pilula-conta" aria-hidden="true"></span></p>
+              <p class="pilula-legenda"><span class="pilula-traco" aria-hidden="true"></span>por mês</p>
+            </div>
             <p class="preco-nota" id="preco-nota">Preço fictício de demonstração. Inclui avaliação inicial e ajuste do plano a cada 4 semanas.</p>
           </div>
-          <a class="botao botao-principal" href="#agenda">Reservar aula de experiência</a>
+          <a class="botao botao-principal" href="#agenda"><span class="rolo"><span class="rolo-texto" data-rotulo="Reservar aula de experiência">Reservar aula de experiência</span></span></a>
         </div>
       </div>
     </div>
@@ -125,7 +145,7 @@
   <!-- CALCULADORA -->
   <section class="secao secao-alt" id="calculadora" aria-labelledby="titulo-calc">
     <div class="grade">
-      <h2 id="titulo-calc" class="titulo-secao">Calculadora de IMC e gasto calórico</h2>
+      <h2 id="titulo-calc" class="titulo-secao"><span class="linha-anim">Calculadora de IMC e gasto calórico</span></h2>
       <p class="intro-secao">Preencha seus dados e veja seu IMC e uma estimativa de quantas calorias você gasta por dia. O cálculo roda no seu navegador e nada é enviado.</p>
 
       <div class="duas-colunas">
@@ -166,12 +186,18 @@
         <div class="resultado-calc" aria-live="polite">
           <div class="medida">
             <p class="medida-rotulo">Seu IMC</p>
-            <p class="medida-valor" id="imc-valor">25,5</p>
+            <div class="pilula">
+              <p class="pilula-numero"><span class="pilula-real" id="imc-valor">25,5</span><span class="pilula-conta" aria-hidden="true"></span></p>
+              <p class="pilula-legenda"><span class="pilula-traco" aria-hidden="true"></span>kg/m²</p>
+            </div>
             <p class="medida-faixa" id="imc-faixa">Sobrepeso (25 a 29,9)</p>
           </div>
           <div class="medida">
             <p class="medida-rotulo">Gasto diário estimado</p>
-            <p class="medida-valor"><span id="gasto-valor">1.950</span><span class="medida-unidade"> kcal</span></p>
+            <div class="pilula">
+              <p class="pilula-numero"><span class="pilula-real" id="gasto-valor">1.950</span><span class="pilula-conta" aria-hidden="true"></span></p>
+              <p class="pilula-legenda"><span class="pilula-traco" aria-hidden="true"></span>kcal por dia</p>
+            </div>
             <p class="medida-faixa" id="tmb-texto">Metabolismo basal de cerca de 1.420 kcal, vezes o fator do seu dia a dia.</p>
           </div>
           <p class="aviso">Estimativa feita com as fórmulas de IMC e de Mifflin-St Jeor. O IMC não distingue músculo de gordura e o gasto real varia de pessoa para pessoa. Isto não substitui avaliação médica ou nutricional.</p>
@@ -183,39 +209,58 @@
   <!-- MÉTODO -->
   <section class="secao secao-escura" id="metodo" aria-labelledby="titulo-metodo">
     <div class="grade">
-      <h2 id="titulo-metodo" class="titulo-secao">Como eu trabalho</h2>
-      <p class="intro-secao">Três etapas que se repetem o ano inteiro. Nada de treino copiado da internet nem de planilha que ninguém segue.</p>
+      <h2 id="titulo-metodo" class="titulo-secao"><span class="linha-anim">Como eu trabalho</span></h2>
+      <p class="intro-secao declaracao">Três etapas que se repetem o ano inteiro. <span class="declaracao-destaque">Constância,</span> não intensidade.</p>
       <dl class="etapas">
         <div class="etapa">
-          <dt>Avaliação</dt>
+          <dt><span class="etapa-nome">Avaliação</span> <span class="chip-delta">Semana 1</span></dt>
+          <dd class="etapa-midia"><img src="img/metodo-avaliacao.webp" width="1456" height="970" loading="lazy" decoding="async" alt="Fita métrica de aço, prancheta com folha quadriculada e um bastão de mobilidade sobre piso de concreto, em luz dura com sombra diagonal."></dd>
           <dd>Na primeira semana eu olho postura, mobilidade, histórico de lesões e, principalmente, sua rotina. O treino tem que caber nela, não o contrário.</dd>
         </div>
         <div class="etapa">
-          <dt>Plano</dt>
+          <dt><span class="etapa-nome">Plano</span> <span class="chip-delta">Por escrito</span></dt>
+          <dd class="etapa-midia"><img src="img/metodo-plano.webp" width="1456" height="970" loading="lazy" decoding="async" alt="Celular apoiado em um suporte mostrando uma tela de vídeo de exercício desfocada, ao lado de um caderno aberto e uma caneta, sobre banco de madeira em estúdio claro."></dd>
           <dd>Você recebe o plano por escrito, com vídeo curto de cada exercício, carga sugerida e o que fazer se perder um dia. Presencial ou online, o material é o mesmo.</dd>
         </div>
         <div class="etapa">
-          <dt>Ajuste</dt>
+          <dt><span class="etapa-nome">Ajuste</span> <span class="chip-delta">A cada 4 semanas</span></dt>
+          <dd class="etapa-midia"><img src="img/metodo-ajuste.webp" width="1456" height="970" loading="lazy" decoding="async" alt="Anilhas de ferro de tamanhos diferentes encostadas em uma parede de giz, com giz de magnésio espalhado no piso de concreto e uma sombra diagonal."></dd>
           <dd>A cada 4 semanas a gente mede o que mudou e troca o que precisa. É esse ciclo curto que mantém o resultado vindo sem você enjoar.</dd>
         </div>
       </dl>
-      <p class="metodo-bio">Tiago Maciel é um profissional fictício criado para esta demonstração. Em um site real, aqui entrariam a formação, o registro profissional e a história do personal.</p>
+      <div class="metodo-sobre">
+        <div class="metodo-texto">
+          <h3 class="metodo-titulo">Quem monta o seu treino</h3>
+          <p class="metodo-bio">Tiago Maciel é um profissional fictício criado para esta demonstração. Em um site real, aqui entrariam a formação, o registro profissional e a história do personal.</p>
+          <p class="metodo-bio">A foto ao lado também é ilustrativa: mostra o personal de costas, anotando a avaliação, sem rosto reconhecível.</p>
+        </div>
+        <figure class="metodo-foto">
+          <img src="img/tiago-retrato.webp" width="1152" height="1440" loading="lazy" decoding="async" alt="Personal trainer visto de costas, de camiseta preta, anotando em uma prancheta diante de uma parede de giz com uma toalha azul-cobalto pendurada.">
+          <figcaption class="olho-foto"><span>Prancheta antes do treino</span><span>Cuiabá, 2026</span></figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
   <!-- AGENDA -->
   <section class="secao secao-escura secao-agenda" id="agenda" aria-labelledby="titulo-agenda">
     <div class="grade">
-      <h2 id="titulo-agenda" class="titulo-secao">Horários livres</h2>
-      <p class="intro-secao">Escolha um horário para a aula de experiência presencial. É uma agenda simulada: os horários ocupados são inventados e a reserva fica só no seu navegador.</p>
-
-      <div class="agenda-controles">
-        <button type="button" class="botao botao-escuro" id="semana-anterior" aria-label="Semana anterior">Semana anterior</button>
-        <p class="agenda-periodo" id="agenda-periodo" aria-live="polite"></p>
-        <button type="button" class="botao botao-escuro" id="semana-proxima" aria-label="Próxima semana">Próxima semana</button>
+      <h2 id="titulo-agenda" class="titulo-secao"><span class="linha-anim">Horários livres</span></h2>
+      <div class="agenda-topo">
+        <p class="intro-secao">Escolha um horário para a aula de experiência presencial. É uma agenda simulada: os horários ocupados são inventados e a reserva fica só no seu navegador.</p>
+        <figure class="agenda-foto">
+          <img src="img/agenda-aula-experiencia.webp" width="1456" height="1088" loading="lazy" decoding="async" alt="Personal trainer e aluno vistos de costas, em uma academia à meia-luz, ajustando a pegada em uma barra, com uma toalha azul-cobalto no rack.">
+          <figcaption class="olho-foto"><span>Aula de experiência</span><span>50 minutos</span></figcaption>
+        </figure>
       </div>
 
-      <div class="agenda-dias" id="agenda-dias" role="group" aria-label="Escolha o dia"></div>
+      <div class="agenda-controles trilho">
+        <button type="button" class="segmento" id="semana-anterior" aria-label="Semana anterior">Semana anterior</button>
+        <p class="agenda-periodo" id="agenda-periodo" aria-live="polite"></p>
+        <button type="button" class="segmento" id="semana-proxima" aria-label="Próxima semana">Próxima semana</button>
+      </div>
+
+      <div class="agenda-dias trilho" id="agenda-dias" role="group" aria-label="Escolha o dia"></div>
 
       <div class="agenda-rolagem">
         <table class="agenda" id="agenda-tabela">
@@ -239,8 +284,8 @@
         </div>
         <p class="erro erro-escura" id="erro-reserva" role="alert" hidden></p>
         <div class="acoes">
-          <button type="submit" class="botao botao-principal">Confirmar aula de experiência</button>
-          <button type="button" class="botao botao-escuro" id="limpar-reserva" hidden>Cancelar reserva</button>
+          <button type="submit" class="botao botao-principal"><span class="rolo"><span class="rolo-texto" data-rotulo="Confirmar aula de experiência">Confirmar aula de experiência</span></span></button>
+          <button type="button" class="botao botao-escuro" id="limpar-reserva" hidden><span class="rolo"><span class="rolo-texto" data-rotulo="Cancelar reserva">Cancelar reserva</span></span></button>
         </div>
       </form>
 
@@ -255,9 +300,12 @@
   <!-- DEPOIMENTOS -->
   <section class="secao" id="depoimentos" aria-labelledby="titulo-depoimentos">
     <div class="grade">
-      <h2 id="titulo-depoimentos" class="titulo-secao">Quem treina comigo</h2>
+      <h2 id="titulo-depoimentos" class="titulo-secao"><span class="linha-anim">Quem treina comigo</span></h2>
       <p class="intro-secao">Depoimentos fictícios, com nomes e cidades inventados, só para mostrar como a seção ficaria em um site real.</p>
-      <div class="depoimentos">
+      <p class="declaracao-olho">O que os alunos repetem</p>
+      <p class="declaracao">Oito meses sem falhar uma semana valem mais que <span class="declaracao-destaque">um mês perfeito.</span></p>
+      <div class="carrossel" id="carrossel" aria-roledescription="carrossel" aria-label="Depoimentos">
+      <div class="depoimentos" id="depoimentos-trilho">
         <blockquote class="depoimento">
           <p>Eu já tinha começado e parado uma dúzia de vezes. Com três dias por semana que cabem antes do trabalho, estou há oito meses sem falhar uma semana.</p>
           <footer><cite>Renata Alcântara</cite>, Cuiabá, treino presencial</footer>
@@ -271,13 +319,19 @@
           <footer><cite>Cleide Marquezini</cite>, Rondonópolis, consultoria online</footer>
         </blockquote>
       </div>
+      <div class="carrossel-controles" id="carrossel-controles" hidden>
+        <button type="button" class="seta seta-anterior" id="depo-anterior" aria-controls="depoimentos-trilho" aria-label="Depoimento anterior"></button>
+        <p class="carrossel-posicao" id="carrossel-posicao" aria-live="polite">1 de 3</p>
+        <button type="button" class="seta seta-proxima" id="depo-proximo" aria-controls="depoimentos-trilho" aria-label="Próximo depoimento"></button>
+      </div>
+      </div>
     </div>
   </section>
 
   <!-- COMO ISTO FUNCIONA -->
   <section class="secao secao-alt" id="como-funciona" aria-labelledby="titulo-como">
     <div class="grade">
-      <h2 id="titulo-como" class="titulo-secao">Como isto funciona</h2>
+      <h2 id="titulo-como" class="titulo-secao"><span class="linha-anim">Como isto funciona</span></h2>
       <p class="intro-secao">Esta página é uma demonstração da Mil e Uma Linhas! para mostrar a um personal trainer como poderia ser o site dele.</p>
 
       <div class="explicacao">
@@ -296,7 +350,7 @@
             <li>Calculadora: IMC = peso / altura². Gasto diário = TMB (Mifflin-St Jeor) vezes fator de atividade. Validação de faixas com mensagem de erro em <code>role="alert"</code>.</li>
             <li>Agenda: grade semanal gerada a partir da data atual; ocupação determinística por função hash da data e hora. Reserva salva em <code>localStorage</code> na chave <code>cadencia-reserva</code>, com botão para apagar.</li>
             <li>Acessibilidade: <code>lang="pt-BR"</code>, contraste AA ou melhor em todos os pares, foco visível, formulários com <code>label</code> e <code>fieldset</code>, resultados em <code>aria-live</code>, tabela da agenda com cabeçalhos e botões reais nas células.</li>
-            <li>Movimento: uma animação de abertura em CSS, desligada com <code>prefers-reduced-motion: reduce</code>.</li>
+            <li>Movimento: revelação dos títulos linha a linha (clip-path com bloco de cor), entrada com desfoque dos blocos ao rolar (IntersectionObserver, uma vez), barras da semana que sobem ao trocar o plano, números que contam em 400 ms, botões com rolagem do rótulo, faixa em loop pausável e carrossel de depoimentos a partir de 720 px. Tudo em CSS e JavaScript próprios, desligado com <code>prefers-reduced-motion: reduce</code>.</li>
             <li>Testes: <code>tests/site.cjs</code> com Playwright em 1280x900, iPhone 13 e 320px, checando erros de console, rolagem horizontal, texto cortado e as três funções.</li>
           </ul>
         </details>
@@ -306,13 +360,36 @@
 </main>
 
 <footer class="rodape">
-  <div class="grade rodape-grade">
-    <div>
-      <p class="marca-nome marca-nome-rodape">CADÊNCIA</p>
-      <p>Tiago Maciel, personal trainer (fictício)<br>Av. Exemplo, 1000, Cuiabá, MT<br>Telefone fictício: (65) 90000-0000</p>
+  <div class="grade">
+    <div class="rodape-grade">
+      <nav class="rodape-grupo" aria-labelledby="rodape-treino">
+        <p class="rodape-olho" id="rodape-treino">Treino</p>
+        <ul>
+          <li><a href="#plano"><span class="rolo"><span class="rolo-texto" data-rotulo="Monte seu plano">Monte seu plano</span></span></a></li>
+          <li><a href="#calculadora"><span class="rolo"><span class="rolo-texto" data-rotulo="Calculadora">Calculadora</span></span></a></li>
+          <li><a href="#metodo"><span class="rolo"><span class="rolo-texto" data-rotulo="Como eu trabalho">Como eu trabalho</span></span></a></li>
+        </ul>
+      </nav>
+      <nav class="rodape-grupo" aria-labelledby="rodape-agenda">
+        <p class="rodape-olho" id="rodape-agenda">Agenda</p>
+        <ul>
+          <li><a href="#agenda"><span class="rolo"><span class="rolo-texto" data-rotulo="Horários livres">Horários livres</span></span></a></li>
+          <li><a class="rodape-acao" href="#agenda"><span class="rolo"><span class="rolo-texto" data-rotulo="Reservar aula de experiência">Reservar aula de experiência</span></span></a></li>
+        </ul>
+      </nav>
+      <nav class="rodape-grupo" aria-labelledby="rodape-sobre">
+        <p class="rodape-olho" id="rodape-sobre">Sobre</p>
+        <ul>
+          <li><a href="#depoimentos"><span class="rolo"><span class="rolo-texto" data-rotulo="Depoimentos">Depoimentos</span></span></a></li>
+          <li><a href="#como-funciona"><span class="rolo"><span class="rolo-texto" data-rotulo="Como funciona">Como funciona</span></span></a></li>
+          <li><a href="https://mileumalinhas.com.br" rel="noopener"><span class="rolo"><span class="rolo-texto" data-rotulo="Mil e Uma Linhas!">Mil e Uma Linhas!</span></span></a></li>
+        </ul>
+      </nav>
     </div>
-    <div>
-      <p>Site de demonstração feito pela <a href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a>, Cuiabá. Todos os nomes, preços e depoimentos são inventados.</p>
+    <p class="marca-nome marca-nome-rodape" aria-hidden="true">CADÊNCIA</p>
+    <div class="rodape-info">
+      <p>Tiago Maciel, personal trainer (fictício)<br>Av. Exemplo, 1000, Cuiabá, MT<br>Telefone fictício: (65) 90000-0000</p>
+      <p>Site de demonstração feito pela <a class="rodape-texto-link" href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a>, Cuiabá. Todos os nomes, preços e depoimentos são inventados. As fotos foram geradas por IA no Canva e são ilustrativas.</p>
       <p class="rodape-miudo">Fonte Archivo, licença OFL. Nenhum dado é coletado.</p>
     </div>
   </div>

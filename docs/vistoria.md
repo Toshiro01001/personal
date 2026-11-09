@@ -43,6 +43,18 @@ Nenhuma em tempo de execução. Para os testes, Playwright (já instalado na má
 - Não há e-mail, telefone, CPF, CREF ou chave de API real em nenhum arquivo.
 - Fonte Archivo sob licença OFL, com a licença em `fonts/LICENSE-Archivo-OFL.txt`.
 
+## Leva final de design (08/11/2026)
+
+O que mudou nesta leva e o que foi conferido:
+
+- **CSP continua restritiva e igual**: a mesma política de antes em `index.html` e `404.html`. Nenhum domínio novo liberado.
+- **Sem script ou estilo inline**: o HTML continua sem `<script>` inline e sem atributo `style`. Os valores dinâmicos novos (altura das barras da semana, índice para o escalonamento, atraso das entradas ao rolar) são definidos com `element.style.setProperty`, que a CSP permite. A seta dos botões e das setas do carrossel é um SVG em `data:` usado como máscara no CSS, coberto por `img-src 'self' data:`.
+- **Sem recurso externo**: as novas fotos estão em `img/`, servidas do próprio site. Nenhuma biblioteca, fonte, script ou serviço de terceiros entrou; os efeitos dos design systems de referência (GSAP, Rive, WebGL, Unicorn Studio) foram refeitos em CSS e JavaScript próprios.
+- **Sem `innerHTML` novo**: todo texto novo inserido pelo JavaScript (legenda da foto do local, estado de cada horário, contagem dos números, posição do carrossel) usa `textContent`, `setAttribute` ou `createElement`.
+- **Sem dados pessoais**: as fotos foram geradas por IA no Canva e são ilustrativas; as pessoas que aparecem não existem e estão de costas, sem rosto reconhecível. Nenhum nome, telefone ou documento real entrou.
+- **`localStorage`**: continua usado só na agenda, na chave `cadencia-reserva` (data, hora e primeiro nome da reserva simulada), com aviso na tela e botão para apagar. As novidades desta leva (carrossel, faixa pausada, plano, calculadora) não gravam nada.
+- **Teste**: `node tests/site.cjs` passou em 1280x900, iPhone 13 e 320px, sem erro de console e sem nenhum pedido de rede para fora da origem local.
+
 ## Riscos residuais
 
 - A agenda é simulada: se alguém achar que reservou um horário de verdade, não há ninguém do outro lado. Por isso o texto repete "demonstração" e "simulada" na faixa, na introdução da seção e na confirmação.

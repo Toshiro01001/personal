@@ -17,8 +17,9 @@ A empresa, o profissional, o endereço, o telefone, os preços, os horários ocu
 1. Abra https://toshiro01001.github.io/personal/ no celular ou no computador.
 2. Em **Monte seu plano**, toque no objetivo, no número de dias, no local e no formato. O plano de exemplo e o valor mensal mudam na hora, à direita (ou logo abaixo, no celular).
 3. Em **Calculadora**, digite idade, altura e peso e escolha seu nível de atividade. O IMC e o gasto calórico aparecem enquanto você digita. Se digitar um número fora do razoável, o site avisa.
-4. Em **Horários livres**, escolha a semana (botões "Semana anterior" e "Próxima semana"), toque em um horário marcado como "Livre", escreva seu primeiro nome se quiser e toque em **Confirmar aula de experiência**. A confirmação aparece na tela e fica guardada só no seu navegador. **Cancelar reserva** apaga tudo.
-5. No fim da página, **Como isto funciona** explica o site para quem não é da área e tem um bloco "Detalhes técnicos" para quem programa.
+4. Em **Horários livres**, escolha a semana (botões "Semana anterior" e "Próxima semana"), toque em um horário marcado como "Livre" (no celular, toque no dia e depois em **Escolher** na linha do horário), escreva seu primeiro nome se quiser e toque em **Confirmar aula de experiência**. A confirmação aparece na tela e fica guardada só no seu navegador. **Cancelar reserva** apaga tudo.
+5. Em **Quem treina comigo**, no computador, passe os depoimentos com as setas redondas ou arrastando o cartão; no celular eles aparecem um embaixo do outro.
+6. No fim da página, **Como isto funciona** explica o site para quem não é da área e tem um bloco "Detalhes técnicos" para quem programa.
 
 ## Capturas
 
@@ -35,14 +36,33 @@ O estudo completo está em [`docs/identidade.md`](docs/identidade.md).
 - **Nome e ideia**: Cadência Treino. A marca vende constância, não intensidade: "Treino que cabe na sua semana e dura o ano inteiro".
 - **Paleta**: Giz `#F2F0EA` (fundo), Ferro `#15181F` (texto e faixas escuras), Aço `#525A6B` (texto secundário), Linha `#CFCCC2` (bordas) e um único destaque, Cobalto `#2140D9`, que aparece em um lugar por tela. Fugi de propósito do preto com laranja e do neon de academia; o resultado lembra uma prancheta de treino.
 - **Fonte**: só uma, a Archivo variável (licença OFL), servida do próprio site em `fonts/`. Nos títulos ela fica condensada e pesada, como número de camisa; no texto fica normal. Nenhuma fonte vem de fora.
-- **Imagem forte**: uma foto de uma kettlebell, uma corda de pular e uma toalha azul-cobalto sobre concreto (`img/hero.webp`). **A foto foi gerada por IA no Canva e é só ilustrativa**: o espaço e os objetos não existem. Sem fotos de banco de imagem e sem fotos de pessoas. A semana em barras continua em miniatura no resultado do plano, respondendo à escolha de dias.
-- **Movimento**: só a abertura e as respostas a cliques. Com "reduzir movimento" ativado no aparelho, nada se move.
+- **Imagem forte**: uma foto de uma kettlebell, uma corda de pular e uma toalha azul-cobalto sobre concreto (`img/hero.webp`). A semana em barras continua no resultado do plano, subindo a cada escolha de dias.
+- **Fotos**: **todas as fotos do site foram geradas por IA no Canva e são só ilustrativas**: os lugares, os objetos e as pessoas não existem. Pessoas aparecem sempre de costas, sem rosto reconhecível. Sem fotos de banco de imagem.
+- **Design systems da leva final**: as seções claras seguem o estilo de marca de atleta (Lando Norris DS) e as escuras seguem o painel de bordas finas (Ledger DS), sempre com a paleta acima e código próprio. A lista de cada componente e onde ele está fica em [`docs/identidade.md`](docs/identidade.md).
+- **Movimento**: títulos revelados linha a linha, barras e números que respondem às escolhas, blocos que entram ao rolar, uma faixa em loop com botão de pausa e o carrossel de depoimentos. Com "reduzir movimento" ativado no aparelho, nada se move.
+
+## Fotos
+
+| Arquivo | Tamanho | Onde aparece |
+| --- | --- | --- |
+| `img/hero.webp` | 1440 x 1080 | abertura |
+| `img/local-academia.webp` | 1456 x 816 | resultado do plano, local Academia |
+| `img/local-casa.webp` | 1456 x 816 | resultado do plano, local Em casa |
+| `img/local-arlivre.webp` | 1456 x 816 | resultado do plano, local Ao ar livre |
+| `img/metodo-avaliacao.webp` | 1456 x 970 | cartão Avaliação, em Como eu trabalho |
+| `img/metodo-plano.webp` | 1456 x 970 | cartão Plano, em Como eu trabalho |
+| `img/metodo-ajuste.webp` | 1456 x 970 | cartão Ajuste, em Como eu trabalho |
+| `img/tiago-retrato.webp` | 1152 x 1440 | ao lado da bio do personal |
+| `img/agenda-aula-experiencia.webp` | 1456 x 1088 | ao lado da introdução de Horários livres |
+
+Todas foram geradas por IA no Canva e são ilustrativas. A foto do plano troca sozinha quando você escolhe o local.
 
 ## Como funciona por dentro
 
 O site é um arquivo HTML, um CSS e um JavaScript, lidos direto pelo navegador. Não existe servidor meu, banco de dados nem conta.
 
-- **Montador de plano**: dentro do JavaScript há uma tabela de divisões de treino por número de dias (2 a 5), uma lista de exercícios para cada grupo muscular em três versões (academia, casa, ar livre) e uma tabela de preços por formato. Quando você muda uma opção, o código junta essas peças e redesenha o resultado.
+- **Montador de plano**: dentro do JavaScript há uma tabela de divisões de treino por número de dias (2 a 5), uma lista de exercícios para cada grupo muscular em três versões (academia, casa, ar livre) e uma tabela de preços por formato. Quando você muda uma opção, o código junta essas peças, troca a foto do local, redesenha as barras da semana (a altura de cada barra acompanha o tamanho do treino do dia) e faz o preço contar do valor antigo ao novo.
+- **Carrossel e faixa**: a partir de 720 px de largura os depoimentos viram carrossel (setas, arraste ou as setas do teclado); abaixo disso ficam em pilha. A faixa de locais e dias pausa com o mouse em cima ou pelo botão de pausa.
 - **Calculadora**: IMC é peso dividido pela altura ao quadrado. O gasto diário usa a fórmula de Mifflin-St Jeor para o metabolismo basal, multiplicada pelo fator de atividade que você escolheu. O resultado é arredondado de 10 em 10 kcal e vem com aviso de que é estimativa.
 - **Agenda**: a grade da semana é montada a partir da data de hoje. Os horários "ocupados" vêm de uma função que transforma data e hora em um número sempre igual, então a agenda parece real e não muda a cada recarga. A reserva fica no `localStorage` do seu navegador, com aviso na tela e botão para apagar.
 
@@ -51,8 +71,9 @@ O site é um arquivo HTML, um CSS e um JavaScript, lidos direto pelo navegador. 
 - HTML, CSS e JavaScript puros. Sem framework, sem CDN, sem analytics, sem fonte externa.
 - Content Security Policy por meta: `default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'`. Nenhum script inline e nenhum atributo `style`.
 - Acessibilidade: `lang="pt-BR"`, contraste AA ou melhor em todos os pares de cor, foco visível, formulários com `label`, `fieldset` e `legend`, resultados em regiões `aria-live`, agenda em tabela com cabeçalhos e botões reais, link "pular para o conteúdo".
-- Celular primeiro: grade de uma coluna até 900px, calha de 16px abaixo de 600px, agenda com seletor de dia abaixo de 700px, alvos de toque de pelo menos 44px.
-- Arquivos: `index.html`, `404.html` (caminhos absolutos em `/personal/`), `robots.txt`, `sitemap.xml`, `favicon.svg`, `img/hero.webp` (foto da abertura), `css/estilo.css`, `js/app.js`, `fonts/`, `docs/` (identidade, vistoria e capturas), `tests/site.cjs`.
+- Celular primeiro: grade de uma coluna até 900px, calha de 16px abaixo de 600px, agenda com seletor de dia e lista de horários abaixo de 720px, depoimentos em pilha abaixo de 720px, alvos de toque de pelo menos 44px.
+- Movimento só com CSS e JavaScript próprios (IntersectionObserver, `requestAnimationFrame`, transições), tudo desligado com `prefers-reduced-motion: reduce`. Valores dinâmicos (altura das barras, atraso das entradas) entram por `element.style.setProperty`, que a CSP permite.
+- Arquivos: `index.html`, `404.html` (caminhos absolutos em `/personal/`), `robots.txt`, `sitemap.xml`, `favicon.svg`, `img/` (as nove fotos da tabela acima), `css/estilo.css`, `js/app.js`, `fonts/`, `docs/` (identidade, vistoria e capturas), `tests/site.cjs`.
 
 ## Como rodar no seu computador
 
