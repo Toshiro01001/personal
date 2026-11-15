@@ -82,6 +82,14 @@ O que mudou e o que foi conferido:
 - **Não foi possível**: baixar o pacote de arquivos do Mosaik (modelo 3D e texturas de alumínio), porque a rede do ambiente de trabalho bloqueou o endereço. A marca de metal usa o Sigilo com os mapas feitos aqui.
 - **Teste**: `node tests/site.cjs` passou em 1280x900, iPhone 13 e 320px. O teste de rede passou a aceitar `blob:` da própria origem.
 
+## Assinatura M1L! | RTJ no rodapé (15/11/2026)
+
+- **Recursos novos, todos locais**: `img/marca/cromo-m1l.webp`, `img/marca/rtj.svg` e `js/assinatura.js`, os mesmos do site da Mil e Uma Linhas!. Nenhum pedido para fora.
+- **CSP igual**: o script é um arquivo próprio, sem inline. O RTJ vivo é um shader pequeno em WebGL dentro de um `canvas`, com o SVG como máscara no CSS.
+- **Link externo**: a assinatura leva a https://mileumalinhas.com.br com `rel="noopener"`.
+- **Sem dados**: lê só a posição do ponteiro perto do RTJ. Sem WebGL ou com "menos movimento", fica a imagem parada.
+- **Teste**: `node tests/site.cjs` passou em 1280x900, iPhone 13 e 320px, sem rolagem lateral.
+
 ## Riscos residuais
 
 - A agenda é simulada: se alguém achar que reservou um horário de verdade, não há ninguém do outro lado. Por isso o texto repete "demonstração" e "simulada" na faixa, na introdução da seção e na confirmação.
