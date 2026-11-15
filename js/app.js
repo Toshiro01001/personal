@@ -611,6 +611,41 @@
   /* =========================================================
      Início
      ========================================================= */
+  /* =========================================================
+     Sigilo da abertura: 15 quadros já renderizados, trocados conforme o ponteiro
+     (ou num balanço lento, no celular). Sem WebGL: é só uma imagem desenhada num canvas.
+     ========================================================= */
+  function iniciarSigilo() {
+    var palco = $("#sigilo-palco"), tela = $("#sigilo-quadro");
+    if (!palco || !tela || semMovimento || !tela.getContext) return;
+    var ctx = tela.getContext("2d"), tira = new Image(), N = 15, L = 640, A = 860;
+    var alvo = 0.5, atual = 0.5, ultimoQuadro = -1, visivel = true, quadroPedido = 0, ultimoPonteiro = 0;
+    function desenhar(t) {
+      quadroPedido = 0;
+      if (!visivel || document.hidden) return;
+      if (t - ultimoPonteiro > 2500) alvo = 0.5 + 0.34 * Math.sin(t / 2600);
+      atual += (alvo - atual) * 0.08;
+      var q = Math.max(0, Math.min(N - 1, Math.round(atual * (N - 1))));
+      if (q !== ultimoQuadro) { ctx.drawImage(tira, q * L, 0, L, A, 0, 0, L, A); ultimoQuadro = q; }
+      quadroPedido = requestAnimationFrame(desenhar);
+    }
+    function acordar() { if (!quadroPedido) quadroPedido = requestAnimationFrame(desenhar); }
+    tira.onload = function () {
+      ctx.drawImage(tira, 7 * L, 0, L, A, 0, 0, L, A);
+      palco.classList.add("sigilo-vivo");
+      window.addEventListener("pointermove", function (ev) {
+        if (ev.pointerType === "touch") return;
+        alvo = ev.clientX / window.innerWidth; ultimoPonteiro = performance.now(); acordar();
+      }, { passive: true });
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (es) { visivel = es[0].isIntersecting; if (visivel) acordar(); }).observe(palco);
+      }
+      document.addEventListener("visibilitychange", acordar);
+      acordar();
+    };
+    tira.src = "img/sigilo-giro.webp";
+  }
+
   function iniciar() {
     var fp = $("#form-plano");
     if (fp) { fp.addEventListener("change", montarPlano); montarPlano(); }
@@ -625,6 +660,7 @@
     iniciarFaixa();
     iniciarCarrossel();
     iniciarRevelacao();
+    iniciarSigilo();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar);
