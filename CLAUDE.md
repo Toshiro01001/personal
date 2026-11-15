@@ -12,4 +12,4 @@ Site de demonstração de um personal trainer fictício (treino presencial e con
 - Entregue arquivos soltos, nunca em `.zip`.
 - O repositório é público: não coloque senhas, chaves secretas nem dados pessoais em arquivos versionados.
 - Mantenha a CSP restritiva: sem script inline, sem atributo `style`, sem CDN, sem fonte externa. Alturas e cores dinâmicas só via classes ou `element.style.setProperty`.
-- Respeite a identidade: Cobalto em um lugar por tela, sem gradientes, sem cartões com sombra, uma só família tipográfica (Archivo variável, local).
+- Respeite a identidade Fio de Lâmina (ver `docs/identidade.md`): aço escuro, títulos e números cromados, Cobalto como único ponto de cor (botão principal, dias acesos e a gema do símbolo), uma só família tipográfica (Archivo variável, local). O símbolo é o Sigilo; não redesenhe.

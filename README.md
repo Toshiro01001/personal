@@ -33,19 +33,22 @@ A empresa, o profissional, o endereço, o telefone, os preços, os horários ocu
 
 O estudo completo está em [`docs/identidade.md`](docs/identidade.md).
 
-- **Nome e ideia**: Cadência Treino. A marca vende constância, não intensidade: "Treino que cabe na sua semana e dura o ano inteiro".
-- **Paleta**: Giz `#F2F0EA` (fundo), Ferro `#15181F` (texto e faixas escuras), Aço `#525A6B` (texto secundário), Linha `#CFCCC2` (bordas) e um único destaque, Cobalto `#2140D9`, que aparece em um lugar por tela. Fugi de propósito do preto com laranja e do neon de academia; o resultado lembra uma prancheta de treino.
+- **Nome e ideia**: Cadência Treino. A frase da abertura é "Forje sua força. Domine seus limites.", e o método continua sendo constância: poucos dias por semana, repetidos por meses.
+- **Estilo**: Fio de Lâmina, na estética Metalheart (fim dos anos 1990 a meados dos 2000): aço escuro, títulos e números cromados, miras e marcações técnicas.
+- **Paleta**: fundos de aço quase preto (`#0B0E13`, `#10141B`, `#050709`), texto claro `#E7EBF1`, Aço `#8F98A7` (texto secundário) e um único ponto de cor, Cobalto `#2140D9`, no botão principal, nos dias acesos e na gema do símbolo.
 - **Fonte**: só uma, a Archivo variável (licença OFL), servida do próprio site em `fonts/`. Nos títulos ela fica condensada e pesada, como número de camisa; no texto fica normal. Nenhuma fonte vem de fora.
-- **Imagem forte**: uma foto de uma kettlebell, uma corda de pular e uma toalha azul-cobalto sobre concreto (`img/hero.webp`). A semana em barras continua no resultado do plano, subindo a cada escolha de dias.
-- **Fotos**: **todas as fotos do site foram geradas por IA no Canva e são só ilustrativas**: os lugares, os objetos e as pessoas não existem. Pessoas aparecem sempre de costas, sem rosto reconhecível. Sem fotos de banco de imagem.
-- **Design systems da leva final**: as seções claras seguem o estilo de marca de atleta (Lando Norris DS) e as escuras seguem o painel de bordas finas (Ledger DS), sempre com a paleta acima e código próprio. A lista de cada componente e onde ele está fica em [`docs/identidade.md`](docs/identidade.md).
+- **Imagem forte**: o Sigilo, um emblema de lâminas de aço com uma gema azul-cobalto, no centro de uma mira que marca os sete dias da semana com três acesos. Ele gira conforme o ponteiro: são 15 imagens já prontas (`img/sigilo-giro.webp`) trocadas num quadro, sem 3D em tempo real. A semana em barras continua no resultado do plano, subindo a cada escolha de dias.
+- **Fotos**: **todas as fotos do site foram geradas por IA no ChatGPT e são só ilustrativas**: os lugares, os objetos e as pessoas não existem. Pessoas aparecem sempre de costas, sem rosto reconhecível. Sem fotos de banco de imagem.
+- **Base**: a estrutura dos componentes vem da leva anterior (marca de atleta do Lando Norris DS e painel de bordas finas do Ledger DS), agora toda em aço escuro e com código próprio. A lista de cada componente e onde ele está fica em [`docs/identidade.md`](docs/identidade.md).
 - **Movimento**: títulos revelados linha a linha, barras e números que respondem às escolhas, blocos que entram ao rolar, uma faixa em loop com botão de pausa e o carrossel de depoimentos. Com "reduzir movimento" ativado no aparelho, nada se move.
 
 ## Fotos
 
 | Arquivo | Tamanho | Onde aparece |
 | --- | --- | --- |
-| `img/hero.webp` | 1440 x 1080 | abertura |
+| `img/sigilo-frente.webp` | 640 x 860 | abertura, símbolo parado |
+| `img/sigilo-giro.webp` | 9600 x 860 | abertura, 15 quadros do giro do símbolo |
+| `img/sigilo-marca.webp` | 96 x 129 | símbolo ao lado do nome, no topo |
 | `img/local-academia.webp` | 1456 x 816 | resultado do plano, local Academia |
 | `img/local-casa.webp` | 1456 x 816 | resultado do plano, local Em casa |
 | `img/local-arlivre.webp` | 1456 x 816 | resultado do plano, local Ao ar livre |
@@ -55,7 +58,7 @@ O estudo completo está em [`docs/identidade.md`](docs/identidade.md).
 | `img/tiago-retrato.webp` | 1152 x 1440 | ao lado da bio do personal |
 | `img/agenda-aula-experiencia.webp` | 1456 x 1088 | ao lado da introdução de Horários livres |
 
-Todas foram geradas por IA no Canva e são ilustrativas. A foto do plano troca sozinha quando você escolhe o local.
+As fotos foram geradas por IA no ChatGPT e são ilustrativas. As três imagens do Sigilo são renderizações minhas. A foto do plano troca sozinha quando você escolhe o local.
 
 ## Como funciona por dentro
 

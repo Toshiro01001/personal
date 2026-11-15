@@ -55,6 +55,19 @@ O que mudou nesta leva e o que foi conferido:
 - **`localStorage`**: continua usado só na agenda, na chave `cadencia-reserva` (data, hora e primeiro nome da reserva simulada), com aviso na tela e botão para apagar. As novidades desta leva (carrossel, faixa pausada, plano, calculadora) não gravam nada.
 - **Teste**: `node tests/site.cjs` passou em 1280x900, iPhone 13 e 320px, sem erro de console e sem nenhum pedido de rede para fora da origem local.
 
+## Estilo Fio de Lâmina (15/11/2026)
+
+O que mudou nesta leva e o que foi conferido:
+
+- **CSP igual**: a mesma política em `index.html`. Nenhum domínio liberado, nenhum script ou estilo inline, nenhum atributo `style`.
+- **Sem 3D em tempo real e sem biblioteca**: o símbolo da abertura é uma tira de 15 imagens (`img/sigilo-giro.webp`) desenhada num `canvas` pelo `js/app.js`. Não entrou WebGL, three.js nem nenhum arquivo de terceiros.
+- **Recursos novos, todos locais**: três imagens do símbolo e oito fotos novas em `img/`. O grão do fundo e a seta dos botões são SVG em `data:` dentro do CSS, cobertos por `img-src 'self' data:`. A mira da abertura é SVG escrito no próprio HTML, sem script.
+- **Sem `innerHTML` novo**: o código novo só desenha imagem no `canvas` e liga uma classe.
+- **Nada novo gravado**: o giro do símbolo não usa `localStorage`, cookie nem rede. Ele lê só a posição do ponteiro, que não sai da página.
+- **Fotos**: geradas por IA no ChatGPT, ilustrativas. As duas com pessoas mostram todos de costas, sem rosto. Conferi que não há marca nem texto legível; a fita métrica e o adipômetro têm só os números da escala.
+- **Movimento**: o giro para quando a abertura sai da tela ou a aba fica em segundo plano, e não começa com "menos movimento" ligado.
+- **Teste**: `node tests/site.cjs` passou em 1280x900, iPhone 13 e 320px, sem erro de console e sem pedido de rede para fora da origem local.
+
 ## Riscos residuais
 
 - A agenda é simulada: se alguém achar que reservou um horário de verdade, não há ninguém do outro lado. Por isso o texto repete "demonstração" e "simulada" na faixa, na introdução da seção e na confirmação.

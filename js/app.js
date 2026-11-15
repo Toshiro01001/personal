@@ -117,11 +117,11 @@
   };
   var LOCAIS = { academia: "na academia", casa: "em casa", arlivre: "ao ar livre" };
   var DIAS_SEMANA = ["S", "T", "Q", "Q", "S", "S", "D"];
-  // Foto e legenda do local escolhido (arquivos em img/, gerados por IA no Canva).
+  // Foto e legenda do local escolhido (arquivos em img/, gerados por IA no ChatGPT).
   var FOTOS_LOCAL = {
-    academia: { src: "img/local-academia.webp", legenda: ["Academia", "rack e barra livre"], alt: "Área de pesos livres de uma academia vazia: rack de agachamento preto, barra com anilhas e piso emborrachado cinza, em luz de janela." },
-    casa: { src: "img/local-casa.webp", legenda: ["Em casa", "tapete, halteres e elástico"], alt: "Canto de sala de estar com tapete de treino cinza enrolado, um par de halteres pretos e uma faixa elástica, diante de uma parede clara com sombra de janela." },
-    arlivre: { src: "img/local-arlivre.webp", legenda: ["Ao ar livre", "parque em Cuiabá"], alt: "Pista de caminhada de um parque em Cuiabá no início da manhã, com barras fixas de calistenia em aço preto, árvores do cerrado e uma corda de pular pendurada." }
+    academia: { src: "img/local-academia.webp", legenda: ["Academia", "rack e barra livre"], alt: "Área de pesos livres de uma academia escura e vazia: rack de aço preto com a barra carregada de anilhas, sob uma luz fria lateral, e uma toalha azul-cobalto pendurada no suporte." },
+    casa: { src: "img/local-casa.webp", legenda: ["Em casa", "tapete, halteres e elástico"], alt: "Canto de sala à noite: tapete de treino preto no piso de concreto, um par de halteres de ferro, uma kettlebell e uma faixa elástica azul-cobalto enrolada sobre o tapete." },
+    arlivre: { src: "img/local-arlivre.webp", legenda: ["Ao ar livre", "barra fixa na praça"], alt: "Barra fixa de aço molhada de chuva em uma praça ao amanhecer, sob céu nublado, com uma corda de pular azul-cobalto pendurada." }
   };
   var precoAnterior = null;
   var planoDesenhado = false;

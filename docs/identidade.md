@@ -1,5 +1,22 @@
 # Identidade visual: Cadência Treino
 
+## Versão atual: Fio de Lâmina (15/11/2026)
+
+Esta seção vale no lugar das regras antigas de cor, imagem forte e fotos descritas mais abaixo, que ficam como histórico da versão clara.
+
+- **Estilo**: Fio de Lâmina, na estética Metalheart (fim dos anos 1990 a meados dos 2000). Aço escuro, relevo, miras e marcações técnicas em letra pequena e espaçada.
+- **Símbolo**: o Sigilo, emblema de lâminas de aço com uma gema. Aqui a gema é azul-cobalto. Aparece grande na abertura, pequeno ao lado do nome e simplificado no favicon.
+- **Paleta**: fundos `#0B0E13`, `#10141B` e `#050709`; cartões `#0D1117`; texto `#E7EBF1`; Aço `#8F98A7` e Aço claro `#AAB3C0` para texto secundário; linhas `#252B35`. Cobalto `#2140D9` e Cobalto claro `#8FA2FF` são o único ponto de cor.
+- **Onde o Cobalto entra**: botão principal, dias de treino acesos (na mira e nas barras), horários livres da agenda e a gema. Em nenhum outro lugar.
+- **Cromo**: títulos, nome da marca e números grandes usam um degradê de aço polido. A opção escolhida nos formulários vira uma placa clara.
+- **Abertura**: o Sigilo fica no centro de uma mira com sete marcas, uma por dia da semana, e três acesas (segunda, quarta e sexta). A mira diz a ideia da marca: ritmo. O símbolo gira conforme o ponteiro e balança devagar no celular, trocando 15 imagens já prontas num quadro. Com "menos movimento", fica parado.
+- **Fio**: cada seção começa com uma linha de luz que afina nas pontas, com um losango no meio.
+- **Placas**: resultados e cartões são chapas de aço com cantoneiras. Os números ficam sobre uma régua.
+- **Fotos**: cenas escuras com luz fria de lado e um único objeto azul-cobalto em cada uma, geradas por IA no ChatGPT, ilustrativas. Pessoas sempre de costas.
+- **Frase da abertura**: "Forje sua força. Domine seus limites.", com o apoio "Treinamento construído com disciplina, precisão e consistência. Um método feito para transformar esforço em força e evolução em legado." Ela substitui "Treino que cabe na sua semana e dura o ano inteiro".
+- **Fonte**: continua só a Archivo variável, local.
+- **Movimento novo**: um brilho varre o título da abertura uma vez, depois que as linhas aparecem. O resto é o que já existia.
+
 Estudo curto feito antes do código. Tudo aqui é fictício: a empresa, o profissional, os preços e os depoimentos.
 
 ## Nome e posicionamento
