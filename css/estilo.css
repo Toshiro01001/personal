@@ -1143,3 +1143,14 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 40; pointer-even
 .resultado-plano > * { min-width: 0; }
 @media (max-width: 420px) { .resultado-plano .metal-btn { white-space: normal; text-align: left; line-height: 1.2; padding-left: 22px; } }
 #metodo { overflow-x: clip; }
+
+/* Assinatura M1L! | RTJ: padrão de todos os sites da Mil e Uma Linhas! (M1L! cromada e RTJ vivo, js/assinatura.js) */
+.rodape-info { padding-bottom: var(--e3); }
+.assina { margin: 0; padding: var(--e3) 0 var(--e4); border-top: 1px solid var(--linha-escura); }
+.assina-link { display: inline-flex; align-items: center; gap: 16px; text-decoration: none; border-radius: var(--raio); }
+.assina-cromo { display: block; height: 46px; width: auto; }
+.assina-rtj { display: flex; align-items: center; height: 38px; padding-left: 16px; border-left: 1px solid var(--linha); }
+.assina-rtj img { display: block; height: 30px; width: auto; }
+.rtj-vivo { position: relative; display: inline-block; line-height: 0; touch-action: pan-y; }
+.rtj-vivo canvas { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-mask: url("../img/marca/rtj.svg") center / 100% 100% no-repeat; mask: url("../img/marca/rtj.svg") center / 100% 100% no-repeat; }
+.rtj-vivo.rtj-on img { visibility: hidden; }
