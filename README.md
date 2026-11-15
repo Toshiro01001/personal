@@ -1,4 +1,4 @@
-# Cadência Treino
+# Metalheart Performance
 
 Este é um site de demonstração que eu, Rodrigo Jr, da [Mil e Uma Linhas!](https://mileumalinhas.com.br), fiz para mostrar a personal trainers como poderia ser o site deles. Ele está publicado em https://toshiro01001.github.io/personal/.
 
@@ -6,7 +6,7 @@ Este é um site de demonstração que eu, Rodrigo Jr, da [Mil e Uma Linhas!](htt
 
 ## O que é, em uma frase
 
-É o site de um personal trainer inventado, o Tiago Maciel, da "Cadência Treino": você escolhe seu objetivo e vê um plano de treino de exemplo com o preço, calcula seu IMC e seu gasto calórico e escolhe um horário para uma aula de experiência. Tudo funciona na hora, dentro da página.
+É o site de um personal trainer inventado, o Tiago Maciel, da "Metalheart Performance": você escolhe seu objetivo e vê um plano de treino de exemplo com o preço, calcula seu IMC e seu gasto calórico e escolhe um horário para uma aula de experiência. Tudo funciona na hora, dentro da página.
 
 ## Aviso: tudo aqui é fictício
 
@@ -33,7 +33,7 @@ A empresa, o profissional, o endereço, o telefone, os preços, os horários ocu
 
 O estudo completo está em [`docs/identidade.md`](docs/identidade.md).
 
-- **Nome e ideia**: Cadência Treino. A frase da abertura é "Forje sua força. Domine seus limites.", e o método continua sendo constância: poucos dias por semana, repetidos por meses.
+- **Nome e ideia**: Metalheart Performance (até 15/11/2026 o site se chamava Cadência Treino). A frase da abertura é "Forje sua força. Domine seus limites.", e o método continua sendo constância: poucos dias por semana, repetidos por meses.
 - **Estilo**: Fio de Lâmina, na estética Metalheart (fim dos anos 1990 a meados dos 2000): aço escuro, títulos e números cromados, miras e marcações técnicas.
 - **Paleta**: fundos de aço quase preto (`#0B0E13`, `#10141B`, `#050709`), texto claro `#E7EBF1`, Aço `#8F98A7` (texto secundário) e um único ponto de cor, Cobalto `#2140D9`, no botão principal, nos dias acesos e na gema do símbolo.
 - **Fonte**: só uma, a Archivo variável (licença OFL), servida do próprio site em `fonts/`. Nos títulos ela fica condensada e pesada, como número de camisa; no texto fica normal. Nenhuma fonte vem de fora.

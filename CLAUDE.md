@@ -1,4 +1,6 @@
-# Cadência Treino
+# Metalheart Performance
+
+Até 15/11/2026 este site se chamava Cadência Treino; a chave `cadencia-reserva` do `localStorage`, a pasta `cadencia-premium` da fonte e alguns nomes de classe guardam o nome antigo de propósito.
 
 Site de demonstração de um personal trainer fictício (treino presencial e consultoria online), em HTML, CSS e JavaScript próprios, com componentes premium em WebGL servidos do próprio site, feito pela Mil e Uma Linhas! para mostrar a clientes dessa profissão como poderia ser o site deles. Tudo é fictício: empresa, profissional, preços, horários e depoimentos. O `README.md` explica a organização dos arquivos e `docs/identidade.md` explica as escolhas visuais.
 

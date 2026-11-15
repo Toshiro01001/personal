@@ -1,4 +1,4 @@
-/* Cadência Treino: estilo. Ver docs/identidade.md para a lógica das escolhas.
+/* Metalheart Performance (antes Cadência Treino): estilo. Ver docs/identidade.md para a lógica das escolhas.
    Leva final: seções em Giz seguem o padrão de marca de atleta (Lando Norris DS),
    seções em Ferro e rodapé seguem o painel escuro de bordas finas (Ledger DS).
    A paleta não muda; o lima e o esmeralda dos dois sistemas viram Cobalto. */
@@ -1142,3 +1142,4 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 40; pointer-even
 .metal-btn { max-width: 100%; }
 .resultado-plano > * { min-width: 0; }
 @media (max-width: 420px) { .resultado-plano .metal-btn { white-space: normal; text-align: left; line-height: 1.2; padding-left: 22px; } }
+#metodo { overflow-x: clip; }

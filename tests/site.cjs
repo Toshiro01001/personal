@@ -1,4 +1,4 @@
-/* Testes do site Cadência Treino com Playwright.
+/* Testes do site Metalheart Performance (antes Cadência Treino) com Playwright.
    Uso: node tests/site.cjs
    Sobe um servidor estático (python3 -m http.server) na porta 8306, se não houver um,
    e testa em três tamanhos: computador 1280x900, iPhone 13 e 320px.

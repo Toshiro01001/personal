@@ -1,4 +1,4 @@
-/* Cadência Treino: comportamento da página.
+/* Metalheart Performance (antes Cadência Treino): comportamento da página.
    Tudo roda no navegador. Nenhum pedido sai para a internet.
    Três partes: montador de plano, calculadora e agenda simulada. */
 (function () {

@@ -1,4 +1,4 @@
-# Vistoria de segurança: Cadência Treino
+# Vistoria de segurança: Metalheart Performance (antes Cadência Treino)
 
 Data: 2026-11-08. Site estático de demonstração, publicado no GitHub Pages.
 
