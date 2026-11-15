@@ -90,6 +90,19 @@ O que mudou e o que foi conferido:
 - **Sem dados**: lê só a posição do ponteiro perto do RTJ. Sem WebGL ou com "menos movimento", fica a imagem parada.
 - **Teste**: `node tests/site.cjs` passou em 1280x900, iPhone 13 e 320px, sem rolagem lateral.
 
+## Desempenho e modo leve (15/11/2026)
+
+O site travava ao abrir. O que mudou e o que foi conferido:
+
+- **Causa**: os efeitos em WebGL entravam todos juntos, logo na abertura, e dois deles faziam uma conta pesada (a máscara do metal líquido) no meio do carregamento.
+- **Máscara pronta**: a do título agora é um arquivo (`img/cromo-titulo.png`), calculado uma vez fora do site. A dos botões roda com um quarto do trabalho.
+- **Entrada escalonada**: nada pesado roda enquanto a página abre. Depois, cada efeito entra na sua vez, em momento ocioso.
+- **Fiscal de fluidez**: depois de ligar cada efeito, o site conta os quadros por um segundo. Se ficou lento, o efeito para num quadro fixo, o 3D dá lugar à versão em imagens e os efeitos seguintes não entram.
+- **Dado novo no `localStorage`**: chave `metalheart-modo`, com a palavra `leve` ou `cheio` e a data. Serve para a próxima visita já abrir na versão certa. Não identifica ninguém, não sai do navegador e vale 7 dias.
+- **Menos trabalho por quadro**: a luz das bordas roda a 25 quadros e três quartos da resolução; o 3D roda a 30 quadros quando só balança e não redesenha se nada mudou; a retícula do rodapé só é calculada quando o rodapé chega perto da tela; a tira de imagens do símbolo no celular caiu de 9600 para 6300 px de largura.
+- **Medição** (navegador sem placa de vídeo, processador 4 vezes mais lento): o tempo de página travada nos primeiros 13 segundos caiu de 15,7 s para 1,1 s, e a página parada na abertura foi de 1 para 60 quadros por segundo, já no modo leve. Em computador com placa de vídeo não medi.
+- **Teste**: `node tests/site.cjs` passou em 1280x900, iPhone 13 e 320px.
+
 ## Riscos residuais
 
 - A agenda é simulada: se alguém achar que reservou um horário de verdade, não há ninguém do outro lado. Por isso o texto repete "demonstração" e "simulada" na faixa, na introdução da seção e na confirmação.

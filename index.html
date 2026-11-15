@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://toshiro01001.github.io/personal/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/archivo-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/estilo.css?v=20261115b">
+  <link rel="stylesheet" href="css/estilo.css?v=20261115c">
 </head>
 <body>
 
@@ -46,7 +46,7 @@
       <div class="abertura-texto">
         <p class="abertura-local">Personal trainer em Cuiabá e consultoria online</p>
         <h1 id="titulo-abertura" class="titulo-grande">
-          <span class="linha-anim t1"><span class="t1-texto">Forje sua força.</span><span class="cromo-titulo" id="cromo-titulo" data-texto="FORJE SUA FORÇA." aria-hidden="true"></span></span>
+          <span class="linha-anim t1"><span class="t1-texto">Forje sua força.</span><span class="cromo-titulo" id="cromo-titulo" data-texto="FORJE SUA FORÇA." data-mascara="img/cromo-titulo.png" aria-hidden="true"></span></span>
           <span class="linha-anim t2">Domine seus limites.</span>
         </h1>
         <p class="abertura-lead">Treinamento construído com disciplina, precisão e consistência. Um método feito para transformar esforço em força e evolução em legado.</p>
@@ -69,7 +69,7 @@
         </svg>
         <img class="hero-foto sigilo-fixo" src="img/sigilo-frente.webp" width="640" height="860" alt="Símbolo da Metalheart Performance: um emblema de lâminas de aço escuro com pontas afiadas e uma gema azul-cobalto na base. Em volta, uma mira marca os sete dias da semana, com três acesos." fetchpriority="high" decoding="async">
         <div class="sigilo-3d" id="sigilo-3d"></div>
-        <canvas class="sigilo-quadro" id="sigilo-quadro" width="640" height="860" aria-hidden="true"></canvas>
+        <canvas class="sigilo-quadro" id="sigilo-quadro" width="420" height="564" aria-hidden="true"></canvas>
         </div>
       </figure>
     </div>
@@ -352,7 +352,7 @@
           <summary>Detalhes técnicos</summary>
           <ul>
             <li>HTML, CSS e JavaScript próprios, sem framework, sem CDN, sem analytics. Fonte Archivo variável servida localmente (woff2, licença OFL). Os efeitos em WebGL usam duas bibliotecas servidas do próprio site, em <code>js/premium/</code>: three.js 0.169 (MIT) e Paper Shaders 0.0.81 (Apache-2.0), com as licenças em <code>js/licencas/</code>.</li>
-            <li>Componentes premium: título em metal líquido, botão com anel de metal, luz que corre pelas bordas da abertura, o símbolo em 3D que gira com a rolagem, duas fileiras de cartões que andam em sentidos opostos, cartões do método que inclinam sob o ponteiro e o nome em pontos de retícula no rodapé. No celular e com "reduzir movimento", o símbolo vira imagem e os efeitos param. Sem WebGL, a página funciona inteira na versão simples.</li>
+            <li>Componentes premium: título em metal líquido, botão com anel de metal, luz que corre pelas bordas da abertura, o símbolo em 3D que gira com a rolagem, duas fileiras de cartões que andam em sentidos opostos, cartões do método que inclinam sob o ponteiro e o nome em pontos de retícula no rodapé. No celular e com "reduzir movimento", o símbolo vira imagem e os efeitos param. Sem WebGL, a página funciona inteira na versão simples. Os efeitos entram um por vez depois que a página carrega, e o site mede a fluidez: se o aparelho não aguenta, ele troca sozinho para a versão leve e lembra disso por 7 dias (uma anotação no <code>localStorage</code>, chave <code>metalheart-modo</code>).</li>
             <li>Content Security Policy via meta: <code>default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'</code> (o <code>blob:</code> é a máscara do metal líquido, criada na própria página). Sem script inline e sem atributo <code>style</code>; alturas dinâmicas são definidas pelo CSSOM (<code>element.style.setProperty</code>).</li>
             <li>Montador de plano: tabela de divisões por número de dias, com exercícios trocados conforme o local (academia, casa, ar livre) e faixas de repetição conforme o objetivo. Preço vem de uma tabela fixa por formato e dias.</li>
             <li>Calculadora: IMC = peso / altura². Gasto diário = TMB (Mifflin-St Jeor) vezes fator de atividade. Validação de faixas com mensagem de erro em <code>role="alert"</code>.</li>
@@ -409,8 +409,8 @@
   <div class="hwf" id="hwf" data-palavra="metalheart"><canvas aria-hidden="true"></canvas></div>
 </footer>
 
-<script type="module" src="js/premium/premium.js?v=20261115a"></script>
-<script src="js/app.js?v=20261115a" defer></script>
+<script type="module" src="js/premium/premium.js?v=20261115b"></script>
+<script src="js/app.js?v=20261115b" defer></script>
 <script src="js/assinatura.js?v=20261115a" defer></script>
 </body>
 </html>

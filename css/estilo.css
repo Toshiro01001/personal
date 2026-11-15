@@ -1154,3 +1154,6 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 40; pointer-even
 .rtj-vivo { position: relative; display: inline-block; line-height: 0; touch-action: pan-y; }
 .rtj-vivo canvas { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-mask: url("../img/marca/rtj.svg") center / 100% 100% no-repeat; mask: url("../img/marca/rtj.svg") center / 100% 100% no-repeat; }
 .rtj-vivo.rtj-on img { visibility: hidden; }
+
+/* a máscara do título já vem pronta (img/cromo-titulo.png, 3188 x 560 com 80 de folga de cada lado) */
+.cromo-titulo { width: 105.28%; aspect-ratio: 3188 / 560; }

@@ -623,7 +623,7 @@
       document.addEventListener("sigilo-em-imagem", iniciarSigilo, { once: true });
       return;
     }
-    var ctx = tela.getContext("2d"), tira = new Image(), N = 15, L = 640, A = 860;
+    var ctx = tela.getContext("2d"), tira = new Image(), N = 15, L = 420, A = 564;
     var alvo = 0.5, atual = 0.5, ultimoQuadro = -1, visivel = true, quadroPedido = 0, ultimoPonteiro = 0;
     function desenhar(t) {
       quadroPedido = 0;
@@ -648,7 +648,7 @@
       document.addEventListener("visibilitychange", acordar);
       acordar();
     };
-    tira.src = "img/sigilo-giro.webp";
+    tira.src = "img/sigilo-giro.webp?v=2";
   }
 
   function iniciar() {
