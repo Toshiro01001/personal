@@ -1,6 +1,6 @@
 # Cadência Treino
 
-Site de demonstração de um personal trainer fictício (treino presencial e consultoria online), em HTML, CSS e JavaScript puros, feito pela Mil e Uma Linhas! para mostrar a clientes dessa profissão como poderia ser o site deles. Tudo é fictício: empresa, profissional, preços, horários e depoimentos. O `README.md` explica a organização dos arquivos e `docs/identidade.md` explica as escolhas visuais.
+Site de demonstração de um personal trainer fictício (treino presencial e consultoria online), em HTML, CSS e JavaScript próprios, com componentes premium em WebGL servidos do próprio site, feito pela Mil e Uma Linhas! para mostrar a clientes dessa profissão como poderia ser o site deles. Tudo é fictício: empresa, profissional, preços, horários e depoimentos. O `README.md` explica a organização dos arquivos e `docs/identidade.md` explica as escolhas visuais.
 
 ## Regras de trabalho
 
@@ -11,5 +11,7 @@ Site de demonstração de um personal trainer fictício (treino presencial e con
 - Ao terminar uma alteração, entregue a mensagem de commit em dois blocos rotulados: "Título" (até 50 caracteres) e "Descrição" (estendida, com exatamente o que foi feito).
 - Entregue arquivos soltos, nunca em `.zip`.
 - O repositório é público: não coloque senhas, chaves secretas nem dados pessoais em arquivos versionados.
-- Mantenha a CSP restritiva: sem script inline, sem atributo `style`, sem CDN, sem fonte externa. Alturas e cores dinâmicas só via classes ou `element.style.setProperty`.
+- Mantenha a CSP restritiva: sem script inline, sem atributo `style`, sem `<style>` criada por script, sem CDN, sem fonte externa. Alturas e cores dinâmicas só via classes ou `element.style.setProperty`. O `blob:` em `img-src` existe só para a máscara do metal líquido.
+- Bibliotecas só locais, em `js/premium/` (three.js e Paper Shaders, licenças em `js/licencas/`). Esses arquivos são compilados: não edite à mão. A fonte fica no repositório privado `mil-e-uma-linhas-conteudo`, em `vitrines-fonte/cadencia-premium/`, e é gerada com `node build.mjs`.
+- Todo efeito de `js/premium/` precisa ter versão simples: a página funciona inteira sem WebGL, no celular e com "reduzir movimento".
 - Respeite a identidade Fio de Lâmina (ver `docs/identidade.md`): aço escuro, títulos e números cromados, Cobalto como único ponto de cor (botão principal, dias acesos e a gema do símbolo), uma só família tipográfica (Archivo variável, local). O símbolo é o Sigilo; não redesenhe.

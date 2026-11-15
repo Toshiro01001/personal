@@ -71,7 +71,10 @@ O site é um arquivo HTML, um CSS e um JavaScript, lidos direto pelo navegador. 
 
 ## Detalhes técnicos
 
-- HTML, CSS e JavaScript puros. Sem framework, sem CDN, sem analytics, sem fonte externa.
+- HTML, CSS e JavaScript próprios. Sem framework, sem CDN, sem analytics, sem fonte externa.
+- Componentes premium em `js/premium/` (arquivos já compilados; a fonte fica em repositório privado): título em metal líquido (Cromo), botão com anel de metal (Mercúrio), luz nas bordas da abertura (Moldura), o símbolo em 3D que gira com a rolagem (hero do Mosaik, com a cena no padrão da ferramenta SVG to 3D do GetLayers), fileiras de cartões que correm com a rolagem (Esteira), cartões do método que inclinam (Holo Card), luz que segue o cursor e marca apagada com parallax (Mosaik) e o nome em retícula no rodapé (Halftone Wordmark Footer). Os componentes vêm do ProfitizeBuild.
+- Duas bibliotecas servidas do próprio site: three.js 0.169 (MIT) e Paper Shaders 0.0.81 (Apache-2.0). Licenças em `js/licencas/`.
+- O 3D só carrega no computador (cerca de 520 KB). No celular e com "reduzir movimento", o símbolo é imagem.
 - Content Security Policy por meta: `default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'`. Nenhum script inline e nenhum atributo `style`.
 - Acessibilidade: `lang="pt-BR"`, contraste AA ou melhor em todos os pares de cor, foco visível, formulários com `label`, `fieldset` e `legend`, resultados em regiões `aria-live`, agenda em tabela com cabeçalhos e botões reais, link "pular para o conteúdo".
 - Celular primeiro: grade de uma coluna até 900px, calha de 16px abaixo de 600px, agenda com seletor de dia e lista de horários abaixo de 720px, depoimentos em pilha abaixo de 720px, alvos de toque de pelo menos 44px.

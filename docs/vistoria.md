@@ -68,6 +68,20 @@ O que mudou nesta leva e o que foi conferido:
 - **Movimento**: o giro para quando a abertura sai da tela ou a aba fica em segundo plano, e não começa com "menos movimento" ligado.
 - **Teste**: `node tests/site.cjs` passou em 1280x900, iPhone 13 e 320px, sem erro de console e sem pedido de rede para fora da origem local.
 
+## Componentes premium em WebGL (15/11/2026)
+
+O que mudou e o que foi conferido:
+
+- **CSP, uma mudança**: `img-src` ganhou `blob:`. O metal líquido do título e do botão cria uma máscara em imagem dentro da própria página e a entrega ao shader por um endereço `blob:`. Nada vem de fora. O resto da política é igual, e `connect-src 'none'` continua valendo.
+- **Bibliotecas, só locais**: three.js 0.169.0 (MIT) e @paper-design/shaders 0.0.81 (Apache-2.0), versões travadas, empacotadas em `js/premium/`. Nenhum CDN. As licenças estão em `js/licencas/`.
+- **Ajuste na biblioteca**: a Paper Shaders cria uma `<style>` na página, o que a CSP bloqueia. No empacotamento esse trecho é retirado e o mesmo CSS foi escrito em `css/estilo.css`. Sem estilo inline.
+- **Sem `innerHTML`**: a Esteira original monta os cartões com `innerHTML`; aqui eles são criados com `createElement` e `textContent`.
+- **Sem dados**: nenhum componente grava, lê ou envia nada. Eles leem a posição do ponteiro e da rolagem, que não saem da página.
+- **Falha segura**: cada efeito é montado dentro de um `try`. Sem WebGL2, o título fica em texto, o botão fica com o anel liso e o símbolo fica em imagem. No celular o 3D nem é baixado.
+- **Origem dos componentes**: ProfitizeBuild (Cromo, Mercúrio, Moldura, Esteira, Holo Card, Halftone Wordmark Footer e três seções do Mosaik). Só o código compilado está neste repositório público; a fonte e os prompts ficam no repositório privado.
+- **Não foi possível**: baixar o pacote de arquivos do Mosaik (modelo 3D e texturas de alumínio), porque a rede do ambiente de trabalho bloqueou o endereço. A marca de metal usa o Sigilo com os mapas feitos aqui.
+- **Teste**: `node tests/site.cjs` passou em 1280x900, iPhone 13 e 320px. O teste de rede passou a aceitar `blob:` da própria origem.
+
 ## Riscos residuais
 
 - A agenda é simulada: se alguém achar que reservou um horário de verdade, não há ninguém do outro lado. Por isso o texto repete "demonstração" e "simulada" na faixa, na introdução da seção e na confirmação.

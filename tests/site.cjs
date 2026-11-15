@@ -167,7 +167,8 @@ async function capturar(page, nome, cenario) {
       const pedidosFora = [];
       page.on("console", (m) => { if (m.type() === "error") errosConsole.push(m.text()); });
       page.on("pageerror", (e) => errosConsole.push("pageerror: " + e.message));
-      page.on("request", (r) => { if (!r.url().startsWith(BASE)) pedidosFora.push(r.url()); });
+      // blob: da própria origem é imagem criada na página (a máscara do metal líquido), não um pedido de rede.
+      page.on("request", (r) => { const u = r.url(); if (!u.startsWith(BASE) && !u.startsWith("blob:" + BASE)) pedidosFora.push(u); });
 
       await page.goto(BASE, { waitUntil: "networkidle" });
       await page.waitForTimeout(900);

@@ -618,6 +618,11 @@
   function iniciarSigilo() {
     var palco = $("#sigilo-palco"), tela = $("#sigilo-quadro");
     if (!palco || !tela || semMovimento || !tela.getContext) return;
+    // No computador, js/premium/ desenha o símbolo em 3D de verdade; se ele falhar, avisa e esta versão em imagens assume.
+    if (document.documentElement.classList.contains("premium-3d")) {
+      document.addEventListener("sigilo-em-imagem", iniciarSigilo, { once: true });
+      return;
+    }
     var ctx = tela.getContext("2d"), tira = new Image(), N = 15, L = 640, A = 860;
     var alvo = 0.5, atual = 0.5, ultimoQuadro = -1, visivel = true, quadroPedido = 0, ultimoPonteiro = 0;
     function desenhar(t) {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Cadência Treino | Personal trainer em Cuiabá e consultoria online</title>
   <meta name="description" content="Site de demonstração de um personal trainer fictício: monte um plano de treino, calcule IMC e gasto calórico e simule a reserva de um horário. Feito pela Mil e Uma Linhas!.">
   <meta name="theme-color" content="#050709">
@@ -46,12 +46,12 @@
       <div class="abertura-texto">
         <p class="abertura-local">Personal trainer em Cuiabá e consultoria online</p>
         <h1 id="titulo-abertura" class="titulo-grande">
-          <span class="linha-anim">Forje sua força.</span>
-          <span class="linha-anim">Domine seus limites.</span>
+          <span class="linha-anim t1"><span class="t1-texto">Forje sua força.</span><span class="cromo-titulo" id="cromo-titulo" data-texto="FORJE SUA FORÇA." aria-hidden="true"></span></span>
+          <span class="linha-anim t2">Domine seus limites.</span>
         </h1>
         <p class="abertura-lead">Treinamento construído com disciplina, precisão e consistência. Um método feito para transformar esforço em força e evolução em legado.</p>
         <div class="acoes">
-          <a class="botao botao-principal" href="#plano"><span class="rolo"><span class="rolo-texto" data-rotulo="Montar meu plano">Montar meu plano</span></span></a>
+          <a class="metal-btn" href="#plano"><span class="metal-btn__metal" aria-hidden="true"></span><span class="metal-btn__label">Montar meu plano</span><span class="metal-btn__orb" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
           <a class="botao botao-secundario" href="#agenda"><span class="rolo"><span class="rolo-texto" data-rotulo="Ver horários livres">Ver horários livres</span></span></a>
         </div>
       </div>
@@ -68,24 +68,17 @@
           <text x="18" y="292">eixo</text><text x="582" y="292" text-anchor="end">3 dias</text>
         </svg>
         <img class="hero-foto sigilo-fixo" src="img/sigilo-frente.webp" width="640" height="860" alt="Símbolo da Cadência Treino: um emblema de lâminas de aço escuro com pontas afiadas e uma gema azul-cobalto na base. Em volta, uma mira marca os sete dias da semana, com três acesos." fetchpriority="high" decoding="async">
+        <div class="sigilo-3d" id="sigilo-3d"></div>
         <canvas class="sigilo-quadro" id="sigilo-quadro" width="640" height="860" aria-hidden="true"></canvas>
         </div>
-        <figcaption class="olho-foto"><span>Segunda, quarta e sexta</span><span>ritmo de exemplo</span></figcaption>
       </figure>
     </div>
   </section>
 
   <!-- FAIXA DE LOCAIS E DIAS -->
-  <div class="faixa-cadencia" data-marquee>
+  <section class="esteira" data-marquee aria-label="Onde, como e o que se treina">
     <p class="visualmente-oculto">Onde e como: academia, em casa, ao ar livre, de 2 a 5 dias por semana, presencial ou online.</p>
-    <div class="faixa-janela" aria-hidden="true">
-      <div class="faixa-trilho">
-        <div class="faixa-grupo">Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online · Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online ·</div>
-        <div class="faixa-grupo">Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online · Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online ·</div>
-      </div>
-    </div>
-    <button type="button" class="faixa-pausa" id="faixa-pausa" aria-pressed="false" aria-label="Pausar a faixa em movimento" hidden></button>
-  </div>
+  </section>
 
   <!-- MONTADOR DE PLANO -->
   <section class="secao" id="plano" aria-labelledby="titulo-plano">
@@ -149,7 +142,7 @@
             </div>
             <p class="preco-nota" id="preco-nota">Preço fictício de demonstração. Inclui avaliação inicial e ajuste do plano a cada 4 semanas.</p>
           </div>
-          <a class="botao botao-principal" href="#agenda"><span class="rolo"><span class="rolo-texto" data-rotulo="Reservar aula de experiência">Reservar aula de experiência</span></span></a>
+          <a class="metal-btn" href="#agenda"><span class="metal-btn__metal" aria-hidden="true"></span><span class="metal-btn__label">Reservar aula de experiência</span><span class="metal-btn__orb" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         </div>
       </div>
     </div>
@@ -222,6 +215,7 @@
   <!-- MÉTODO -->
   <section class="secao secao-escura" id="metodo" aria-labelledby="titulo-metodo">
     <div class="grade">
+      <div class="marca-fantasma" aria-hidden="true"></div>
       <h2 id="titulo-metodo" class="titulo-secao"><span class="linha-anim">Como eu trabalho</span></h2>
       <p class="intro-secao declaracao">Três etapas que se repetem o ano inteiro. <span class="declaracao-destaque">Constância,</span> não intensidade.</p>
       <dl class="etapas">
@@ -357,8 +351,9 @@
         <details class="detalhes-tecnicos">
           <summary>Detalhes técnicos</summary>
           <ul>
-            <li>HTML, CSS e JavaScript puros, sem framework, sem CDN, sem analytics. Fonte Archivo variável servida localmente (woff2, licença OFL).</li>
-            <li>Content Security Policy via meta: <code>default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'</code>. Sem script inline e sem atributo <code>style</code>; alturas dinâmicas são definidas pelo CSSOM (<code>element.style.setProperty</code>).</li>
+            <li>HTML, CSS e JavaScript próprios, sem framework, sem CDN, sem analytics. Fonte Archivo variável servida localmente (woff2, licença OFL). Os efeitos em WebGL usam duas bibliotecas servidas do próprio site, em <code>js/premium/</code>: three.js 0.169 (MIT) e Paper Shaders 0.0.81 (Apache-2.0), com as licenças em <code>js/licencas/</code>.</li>
+            <li>Componentes premium: título em metal líquido, botão com anel de metal, luz que corre pelas bordas da abertura, o símbolo em 3D que gira com a rolagem, duas fileiras de cartões que andam em sentidos opostos, cartões do método que inclinam sob o ponteiro e o nome em pontos de retícula no rodapé. No celular e com "reduzir movimento", o símbolo vira imagem e os efeitos param. Sem WebGL, a página funciona inteira na versão simples.</li>
+            <li>Content Security Policy via meta: <code>default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'</code> (o <code>blob:</code> é a máscara do metal líquido, criada na própria página). Sem script inline e sem atributo <code>style</code>; alturas dinâmicas são definidas pelo CSSOM (<code>element.style.setProperty</code>).</li>
             <li>Montador de plano: tabela de divisões por número de dias, com exercícios trocados conforme o local (academia, casa, ar livre) e faixas de repetição conforme o objetivo. Preço vem de uma tabela fixa por formato e dias.</li>
             <li>Calculadora: IMC = peso / altura². Gasto diário = TMB (Mifflin-St Jeor) vezes fator de atividade. Validação de faixas com mensagem de erro em <code>role="alert"</code>.</li>
             <li>Agenda: grade semanal gerada a partir da data atual; ocupação determinística por função hash da data e hora. Reserva salva em <code>localStorage</code> na chave <code>cadencia-reserva</code>, com botão para apagar.</li>
@@ -399,15 +394,16 @@
         </ul>
       </nav>
     </div>
-    <p class="marca-nome marca-nome-rodape" aria-hidden="true">CADÊNCIA</p>
     <div class="rodape-info">
       <p>Tiago Maciel, personal trainer (fictício)<br>Av. Exemplo, 1000, Cuiabá, MT<br>Telefone fictício: (65) 90000-0000</p>
       <p>Site de demonstração feito pela <a class="rodape-texto-link" href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a>, Cuiabá. Todos os nomes, preços e depoimentos são inventados. As fotos foram geradas por IA no ChatGPT e são ilustrativas.</p>
       <p class="rodape-miudo">Fonte Archivo, licença OFL. Nenhum dado é coletado.</p>
     </div>
   </div>
+  <div class="hwf" id="hwf" data-palavra="cadência"><canvas aria-hidden="true"></canvas></div>
 </footer>
 
+<script type="module" src="js/premium/premium.js"></script>
 <script src="js/app.js" defer></script>
 </body>
 </html>

@@ -15,6 +15,7 @@ Esta seção vale no lugar das regras antigas de cor, imagem forte e fotos descr
 - **Fotos**: cenas escuras com luz fria de lado e um único objeto azul-cobalto em cada uma, geradas por IA no ChatGPT, ilustrativas. Pessoas sempre de costas.
 - **Frase da abertura**: "Forje sua força. Domine seus limites.", com o apoio "Treinamento construído com disciplina, precisão e consistência. Um método feito para transformar esforço em força e evolução em legado." Ela substitui "Treino que cabe na sua semana e dura o ano inteiro".
 - **Fonte**: continua só a Archivo variável, local.
+- **Componentes premium (15/11/2026)**: a abertura segue a composição do hero do Mosaik (texto no centro, a marca de metal embaixo, girando 0,7 volta com a rolagem e vazando para a seção seguinte). "Forje sua força." é o Cromo, metal líquido dentro das letras. O botão principal é o Mercúrio. A luz azul das bordas é a Moldura. Depois da abertura vem a Esteira, com os locais, treinos de exemplo e falas. Os cartões do método são Holo Cards com folha só em azuis. As placas têm a luz que segue o cursor e o método tem a marca apagada com parallax, do Mosaik. O rodapé termina no Halftone Wordmark Footer, com "cadência" em pontos que esquentam para o Cobalto claro. Todos vêm do ProfitizeBuild; a cena 3D do símbolo segue a ferramenta SVG to 3D do GetLayers.
 - **Movimento novo**: um brilho varre o título da abertura uma vez, depois que as linhas aparecem. O resto é o que já existia.
 
 Estudo curto feito antes do código. Tudo aqui é fictício: a empresa, o profissional, os preços e os depoimentos.
