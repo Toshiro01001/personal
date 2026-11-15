@@ -1,4 +1,4 @@
-/* Testes do site Cadência Treino com Playwright.
+/* Testes do site Metalheart Performance (antes Cadência Treino) com Playwright.
    Uso: node tests/site.cjs
    Sobe um servidor estático (python3 -m http.server) na porta 8306, se não houver um,
    e testa em três tamanhos: computador 1280x900, iPhone 13 e 320px.
@@ -121,7 +121,7 @@ async function testarFuncoes(page, nome) {
   checar(!(await page.isVisible("#confirmacao")), `[${nome}] confirmação deveria sumir ao cancelar`);
 }
 
-// Foto do hero: carregou, tem a proporção 4:3 e o texto do hero não encosta nela (legibilidade).
+// Símbolo da abertura (o Sigilo): carregou, mantém a proporção 640x860 e o texto não encosta nele (legibilidade).
 async function checarHero(page, contSel) {
   return page.evaluate((contSel) => {
     const img = document.querySelector("img.hero-foto");
@@ -139,9 +139,9 @@ async function checarHero(page, contSel) {
     }
     return {
       existe: true,
-      carregou: img.complete && img.naturalWidth === 1440 && img.naturalHeight === 1080,
+      carregou: img.complete && img.naturalWidth === 640 && img.naturalHeight === 860,
       alt: (img.getAttribute("alt") || "").length > 20,
-      proporcao: Math.round((caixa.width / caixa.height) * 100) / 100,
+      proporcao: Math.round((r.width / r.height) * 100) / 100,
       cabe: r.left >= -1 && r.right <= document.documentElement.clientWidth + 1,
       sobreposto
     };
@@ -167,7 +167,8 @@ async function capturar(page, nome, cenario) {
       const pedidosFora = [];
       page.on("console", (m) => { if (m.type() === "error") errosConsole.push(m.text()); });
       page.on("pageerror", (e) => errosConsole.push("pageerror: " + e.message));
-      page.on("request", (r) => { if (!r.url().startsWith(BASE)) pedidosFora.push(r.url()); });
+      // blob: da própria origem é imagem criada na página (a máscara do metal líquido), não um pedido de rede.
+      page.on("request", (r) => { const u = r.url(); if (!u.startsWith(BASE) && !u.startsWith("blob:" + BASE)) pedidosFora.push(u); });
 
       await page.goto(BASE, { waitUntil: "networkidle" });
       await page.waitForTimeout(900);
@@ -183,10 +184,10 @@ async function capturar(page, nome, cenario) {
       checar(fonteOk, `[${cenario.nome}] fonte Archivo não carregou`);
 
       const hero = await checarHero(page, ".abertura-texto");
-      checar(hero.existe && hero.carregou, `[${cenario.nome}] a foto do hero não carregou (1440x1080)`);
-      checar(hero.existe && hero.alt, `[${cenario.nome}] a foto do hero está sem alt descritivo`);
-      checar(hero.existe && Math.abs(hero.proporcao - 1.33) < 0.02, `[${cenario.nome}] contêiner do hero fora de 4:3 (${hero.proporcao})`);
-      checar(hero.existe && hero.cabe && hero.sobreposto === 0, `[${cenario.nome}] a foto sai da tela ou há texto do hero sobre ela (${hero.sobreposto} sobreposições)`);
+      checar(hero.existe && hero.carregou, `[${cenario.nome}] o símbolo da abertura não carregou (640x860)`);
+      checar(hero.existe && hero.alt, `[${cenario.nome}] o símbolo da abertura está sem alt descritivo`);
+      checar(hero.existe && Math.abs(hero.proporcao - 0.74) < 0.02, `[${cenario.nome}] símbolo da abertura fora da proporção 640x860 (${hero.proporcao})`);
+      checar(hero.existe && hero.cabe && hero.sobreposto === 0, `[${cenario.nome}] o símbolo sai da tela ou há texto da abertura sobre ele (${hero.sobreposto} sobreposições)`);
 
       await capturar(page, "capa", cenario.nome);
       await testarFuncoes(page, cenario.nome);

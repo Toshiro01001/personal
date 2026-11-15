@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>Cadência Treino | Personal trainer em Cuiabá e consultoria online</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Metalheart Performance | Personal trainer em Cuiabá e consultoria online</title>
   <meta name="description" content="Site de demonstração de um personal trainer fictício: monte um plano de treino, calcule IMC e gasto calórico e simule a reserva de um horário. Feito pela Mil e Uma Linhas!.">
-  <meta name="theme-color" content="#15181F">
+  <meta name="theme-color" content="#050709">
   <link rel="canonical" href="https://toshiro01001.github.io/personal/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/archivo-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -22,9 +22,10 @@
 
 <header class="topo">
   <div class="grade topo-conteudo">
-    <a class="marca" href="#inicio" aria-label="Cadência Treino, início da página">
-      <span class="marca-nome">CADÊNCIA</span>
-      <span class="marca-sub">treino</span>
+    <a class="marca" href="#inicio" aria-label="Metalheart Performance, início da página">
+      <img class="marca-simbolo" src="img/sigilo-marca.webp" width="96" height="129" alt="">
+      <span class="marca-nome">METALHEART</span>
+      <span class="marca-sub">performance</span>
     </a>
     <nav class="menu" aria-label="Seções da página">
       <a href="#plano">Plano</a>
@@ -45,34 +46,39 @@
       <div class="abertura-texto">
         <p class="abertura-local">Personal trainer em Cuiabá e consultoria online</p>
         <h1 id="titulo-abertura" class="titulo-grande">
-          <span class="linha-anim">Treino que cabe</span>
-          <span class="linha-anim">na sua semana</span>
-          <span class="linha-anim">e dura o ano inteiro.</span>
+          <span class="linha-anim t1"><span class="t1-texto">Forje sua força.</span><span class="cromo-titulo" id="cromo-titulo" data-texto="FORJE SUA FORÇA." aria-hidden="true"></span></span>
+          <span class="linha-anim t2">Domine seus limites.</span>
         </h1>
-        <p class="abertura-lead">Sou o Tiago Maciel. Monto treinos de 2 a 5 dias por semana que você consegue manter por meses, na academia, em casa ou ao ar livre. Escolha seu objetivo abaixo e veja um plano de exemplo com o preço na hora.</p>
+        <p class="abertura-lead">Treinamento construído com disciplina, precisão e consistência. Um método feito para transformar esforço em força e evolução em legado.</p>
         <div class="acoes">
-          <a class="botao botao-principal" href="#plano"><span class="rolo"><span class="rolo-texto" data-rotulo="Montar meu plano">Montar meu plano</span></span></a>
+          <a class="metal-btn" href="#plano"><span class="metal-btn__metal" aria-hidden="true"></span><span class="metal-btn__label">Montar meu plano</span><span class="metal-btn__orb" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
           <a class="botao botao-secundario" href="#agenda"><span class="rolo"><span class="rolo-texto" data-rotulo="Ver horários livres">Ver horários livres</span></span></a>
         </div>
       </div>
-      <figure class="abertura-figura">
-        <img class="hero-foto" src="img/hero.webp" width="1440" height="1080" alt="Uma kettlebell preta de ferro sobre um piso de concreto cinza, ao lado de uma corda de pular preta com cabos escuros e uma toalha dobrada em azul-cobalto, diante de uma parede clara cortada por uma sombra diagonal." fetchpriority="high" decoding="async">
-        <figcaption class="olho-foto"><span>Kettlebell, corda e toalha</span><span>Cuiabá, 2026</span></figcaption>
+      <figure class="abertura-figura sigilo-palco" id="sigilo-palco">
+        <div class="sigilo-area">
+        <svg class="mira" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+          <circle cx="300" cy="300" r="272"/>
+          <g class="mira-giro"><circle class="mira-fina" cx="300" cy="300" r="246" stroke-dasharray="2 10"/></g>
+          <circle class="mira-fina" cx="300" cy="300" r="150"/>
+          <line class="mira-fina" x1="0" y1="300" x2="90" y2="300"/><line class="mira-fina" x1="510" y1="300" x2="600" y2="300"/>
+          <line class="mira-fina" x1="300" y1="560" x2="300" y2="600"/>
+          <path d="M40 60 H16 V84 M560 60 H584 V84 M40 540 H16 V516 M560 540 H584 V516"/>
+          <line class="mira-dia aceso" x1="73.1" y1="169.0" x2="55.8" y2="159.0"/><text class="aceso" x="40.2" y="154.0" text-anchor="middle">S</text><line class="mira-dia" x1="131.6" y1="99.3" x2="118.7" y2="84.0"/><text class="" x="107.2" y="74.2" text-anchor="middle">T</text><line class="mira-dia aceso" x1="210.4" y1="53.8" x2="203.6" y2="35.0"/><text class="aceso" x="197.4" y="22.1" text-anchor="middle">Q</text><line class="mira-dia" x1="300.0" y1="38.0" x2="300.0" y2="18.0"/><text class="" x="300.0" y="4.0" text-anchor="middle">Q</text><line class="mira-dia aceso" x1="389.6" y1="53.8" x2="396.4" y2="35.0"/><text class="aceso" x="402.6" y="22.1" text-anchor="middle">S</text><line class="mira-dia" x1="468.4" y1="99.3" x2="481.3" y2="84.0"/><text class="" x="492.8" y="74.2" text-anchor="middle">S</text><line class="mira-dia" x1="526.9" y1="169.0" x2="544.2" y2="159.0"/><text class="" x="559.8" y="154.0" text-anchor="middle">D</text>
+          <text x="18" y="292">eixo</text><text x="582" y="292" text-anchor="end">3 dias</text>
+        </svg>
+        <img class="hero-foto sigilo-fixo" src="img/sigilo-frente.webp" width="640" height="860" alt="Símbolo da Metalheart Performance: um emblema de lâminas de aço escuro com pontas afiadas e uma gema azul-cobalto na base. Em volta, uma mira marca os sete dias da semana, com três acesos." fetchpriority="high" decoding="async">
+        <div class="sigilo-3d" id="sigilo-3d"></div>
+        <canvas class="sigilo-quadro" id="sigilo-quadro" width="640" height="860" aria-hidden="true"></canvas>
+        </div>
       </figure>
     </div>
   </section>
 
   <!-- FAIXA DE LOCAIS E DIAS -->
-  <div class="faixa-cadencia" data-marquee>
+  <section class="esteira" data-marquee aria-label="Onde, como e o que se treina">
     <p class="visualmente-oculto">Onde e como: academia, em casa, ao ar livre, de 2 a 5 dias por semana, presencial ou online.</p>
-    <div class="faixa-janela" aria-hidden="true">
-      <div class="faixa-trilho">
-        <div class="faixa-grupo">Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online · Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online ·</div>
-        <div class="faixa-grupo">Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online · Academia · Em casa · Ao ar livre · 2 a 5 dias · Presencial · Online ·</div>
-      </div>
-    </div>
-    <button type="button" class="faixa-pausa" id="faixa-pausa" aria-pressed="false" aria-label="Pausar a faixa em movimento" hidden></button>
-  </div>
+  </section>
 
   <!-- MONTADOR DE PLANO -->
   <section class="secao" id="plano" aria-labelledby="titulo-plano">
@@ -124,7 +130,7 @@
           <p class="resultado-titulo" id="plano-nome">Plano de exemplo</p>
           <div class="mini-semana" id="mini-semana" aria-label="Dias de treino na semana"></div>
           <figure class="plano-foto plano-foto-academia" id="plano-foto">
-            <img id="plano-foto-img" src="img/local-academia.webp" width="1456" height="816" loading="lazy" decoding="async" alt="Área de pesos livres de uma academia vazia: rack de agachamento preto, barra com anilhas e piso emborrachado cinza, em luz de janela.">
+            <img id="plano-foto-img" src="img/local-academia.webp" width="1456" height="816" loading="lazy" decoding="async" alt="Área de pesos livres de uma academia escura e vazia: rack de aço preto com a barra carregada de anilhas, sob uma luz fria lateral, e uma toalha azul-cobalto pendurada no suporte.">
             <figcaption class="olho-foto" id="plano-foto-legenda"><span>Academia</span><span>rack e barra livre</span></figcaption>
           </figure>
           <ol class="dias-plano" id="dias-plano"></ol>
@@ -136,7 +142,7 @@
             </div>
             <p class="preco-nota" id="preco-nota">Preço fictício de demonstração. Inclui avaliação inicial e ajuste do plano a cada 4 semanas.</p>
           </div>
-          <a class="botao botao-principal" href="#agenda"><span class="rolo"><span class="rolo-texto" data-rotulo="Reservar aula de experiência">Reservar aula de experiência</span></span></a>
+          <a class="metal-btn" href="#agenda"><span class="metal-btn__metal" aria-hidden="true"></span><span class="metal-btn__label">Reservar aula de experiência</span><span class="metal-btn__orb" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         </div>
       </div>
     </div>
@@ -209,22 +215,23 @@
   <!-- MÉTODO -->
   <section class="secao secao-escura" id="metodo" aria-labelledby="titulo-metodo">
     <div class="grade">
+      <div class="marca-fantasma" aria-hidden="true"></div>
       <h2 id="titulo-metodo" class="titulo-secao"><span class="linha-anim">Como eu trabalho</span></h2>
       <p class="intro-secao declaracao">Três etapas que se repetem o ano inteiro. <span class="declaracao-destaque">Constância,</span> não intensidade.</p>
       <dl class="etapas">
         <div class="etapa">
           <dt><span class="etapa-nome">Avaliação</span> <span class="chip-delta">Semana 1</span></dt>
-          <dd class="etapa-midia"><img src="img/metodo-avaliacao.webp" width="1456" height="970" loading="lazy" decoding="async" alt="Fita métrica de aço, prancheta com folha quadriculada e um bastão de mobilidade sobre piso de concreto, em luz dura com sombra diagonal."></dd>
+          <dd class="etapa-midia"><img src="img/metodo-avaliacao.webp" width="1456" height="970" loading="lazy" decoding="async" alt="Fita métrica de aço, adipômetro de metal e prancheta com folha quadriculada em branco sobre uma bancada de aço escuro, com uma caneta azul-cobalto."></dd>
           <dd>Na primeira semana eu olho postura, mobilidade, histórico de lesões e, principalmente, sua rotina. O treino tem que caber nela, não o contrário.</dd>
         </div>
         <div class="etapa">
           <dt><span class="etapa-nome">Plano</span> <span class="chip-delta">Por escrito</span></dt>
-          <dd class="etapa-midia"><img src="img/metodo-plano.webp" width="1456" height="970" loading="lazy" decoding="async" alt="Celular apoiado em um suporte mostrando uma tela de vídeo de exercício desfocada, ao lado de um caderno aberto e uma caneta, sobre banco de madeira em estúdio claro."></dd>
+          <dd class="etapa-midia"><img src="img/metodo-plano.webp" width="1456" height="970" loading="lazy" decoding="async" alt="Caderno preto aberto com páginas em branco e marcador de fita azul-cobalto sobre um banco de treino, ao lado de um celular com a tela apagada e um cronômetro de metal."></dd>
           <dd>Você recebe o plano por escrito, com vídeo curto de cada exercício, carga sugerida e o que fazer se perder um dia. Presencial ou online, o material é o mesmo.</dd>
         </div>
         <div class="etapa">
           <dt><span class="etapa-nome">Ajuste</span> <span class="chip-delta">A cada 4 semanas</span></dt>
-          <dd class="etapa-midia"><img src="img/metodo-ajuste.webp" width="1456" height="970" loading="lazy" decoding="async" alt="Anilhas de ferro de tamanhos diferentes encostadas em uma parede de giz, com giz de magnésio espalhado no piso de concreto e uma sombra diagonal."></dd>
+          <dd class="etapa-midia"><img src="img/metodo-ajuste.webp" width="1456" height="970" loading="lazy" decoding="async" alt="Anilhas de ferro de tamanhos diferentes encostadas em uma parede de concreto escuro, com pó de magnésio no chão e uma presilha de barra azul-cobalto sobre uma delas."></dd>
           <dd>A cada 4 semanas a gente mede o que mudou e troca o que precisa. É esse ciclo curto que mantém o resultado vindo sem você enjoar.</dd>
         </div>
       </dl>
@@ -235,7 +242,7 @@
           <p class="metodo-bio">A foto ao lado também é ilustrativa: mostra o personal de costas, anotando a avaliação, sem rosto reconhecível.</p>
         </div>
         <figure class="metodo-foto">
-          <img src="img/tiago-retrato.webp" width="1152" height="1440" loading="lazy" decoding="async" alt="Personal trainer visto de costas, de camiseta preta, anotando em uma prancheta diante de uma parede de giz com uma toalha azul-cobalto pendurada.">
+          <img src="img/tiago-retrato.webp" width="1152" height="1440" loading="lazy" decoding="async" alt="Personal trainer visto de costas, de camiseta preta, anotando em uma prancheta diante de uma parede de concreto escuro, com uma toalha azul-cobalto pendurada em um gancho.">
           <figcaption class="olho-foto"><span>Prancheta antes do treino</span><span>Cuiabá, 2026</span></figcaption>
         </figure>
       </div>
@@ -249,7 +256,7 @@
       <div class="agenda-topo">
         <p class="intro-secao">Escolha um horário para a aula de experiência presencial. É uma agenda simulada: os horários ocupados são inventados e a reserva fica só no seu navegador.</p>
         <figure class="agenda-foto">
-          <img src="img/agenda-aula-experiencia.webp" width="1456" height="1088" loading="lazy" decoding="async" alt="Personal trainer e aluno vistos de costas, em uma academia à meia-luz, ajustando a pegada em uma barra, com uma toalha azul-cobalto no rack.">
+          <img src="img/agenda-aula-experiencia.webp" width="1456" height="1088" loading="lazy" decoding="async" alt="Personal trainer e aluno vistos de costas em uma academia à meia-luz, ajustando a pegada na barra apoiada no rack, com uma toalha azul-cobalto pendurada ao lado.">
           <figcaption class="olho-foto"><span>Aula de experiência</span><span>50 minutos</span></figcaption>
         </figure>
       </div>
@@ -344,8 +351,9 @@
         <details class="detalhes-tecnicos">
           <summary>Detalhes técnicos</summary>
           <ul>
-            <li>HTML, CSS e JavaScript puros, sem framework, sem CDN, sem analytics. Fonte Archivo variável servida localmente (woff2, licença OFL).</li>
-            <li>Content Security Policy via meta: <code>default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'</code>. Sem script inline e sem atributo <code>style</code>; alturas dinâmicas são definidas pelo CSSOM (<code>element.style.setProperty</code>).</li>
+            <li>HTML, CSS e JavaScript próprios, sem framework, sem CDN, sem analytics. Fonte Archivo variável servida localmente (woff2, licença OFL). Os efeitos em WebGL usam duas bibliotecas servidas do próprio site, em <code>js/premium/</code>: three.js 0.169 (MIT) e Paper Shaders 0.0.81 (Apache-2.0), com as licenças em <code>js/licencas/</code>.</li>
+            <li>Componentes premium: título em metal líquido, botão com anel de metal, luz que corre pelas bordas da abertura, o símbolo em 3D que gira com a rolagem, duas fileiras de cartões que andam em sentidos opostos, cartões do método que inclinam sob o ponteiro e o nome em pontos de retícula no rodapé. No celular e com "reduzir movimento", o símbolo vira imagem e os efeitos param. Sem WebGL, a página funciona inteira na versão simples.</li>
+            <li>Content Security Policy via meta: <code>default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'</code> (o <code>blob:</code> é a máscara do metal líquido, criada na própria página). Sem script inline e sem atributo <code>style</code>; alturas dinâmicas são definidas pelo CSSOM (<code>element.style.setProperty</code>).</li>
             <li>Montador de plano: tabela de divisões por número de dias, com exercícios trocados conforme o local (academia, casa, ar livre) e faixas de repetição conforme o objetivo. Preço vem de uma tabela fixa por formato e dias.</li>
             <li>Calculadora: IMC = peso / altura². Gasto diário = TMB (Mifflin-St Jeor) vezes fator de atividade. Validação de faixas com mensagem de erro em <code>role="alert"</code>.</li>
             <li>Agenda: grade semanal gerada a partir da data atual; ocupação determinística por função hash da data e hora. Reserva salva em <code>localStorage</code> na chave <code>cadencia-reserva</code>, com botão para apagar.</li>
@@ -386,15 +394,16 @@
         </ul>
       </nav>
     </div>
-    <p class="marca-nome marca-nome-rodape" aria-hidden="true">CADÊNCIA</p>
     <div class="rodape-info">
       <p>Tiago Maciel, personal trainer (fictício)<br>Av. Exemplo, 1000, Cuiabá, MT<br>Telefone fictício: (65) 90000-0000</p>
-      <p>Site de demonstração feito pela <a class="rodape-texto-link" href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a>, Cuiabá. Todos os nomes, preços e depoimentos são inventados. As fotos foram geradas por IA no Canva e são ilustrativas.</p>
+      <p>Site de demonstração feito pela <a class="rodape-texto-link" href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a>, Cuiabá. Todos os nomes, preços e depoimentos são inventados. As fotos foram geradas por IA no ChatGPT e são ilustrativas.</p>
       <p class="rodape-miudo">Fonte Archivo, licença OFL. Nenhum dado é coletado.</p>
     </div>
   </div>
+  <div class="hwf" id="hwf" data-palavra="metalheart"><canvas aria-hidden="true"></canvas></div>
 </footer>
 
+<script type="module" src="js/premium/premium.js"></script>
 <script src="js/app.js" defer></script>
 </body>
 </html>
